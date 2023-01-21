@@ -2,7 +2,7 @@
 
 Noteed is a free minimal app that helps you write and manage your thoughts or todo lists.
 
-Give it a try:
+Give it a try: https://noteed-lime.vercel.app/
 
 ## Tech Stack
 
@@ -28,7 +28,7 @@ $ npm start
 
 ## Screenshots
 
-<img src="" width="350" title="hover text">
-<img src="" width="350" title="hover text">
-<img src="" width="350" title="hover text">
-<img src="" width="350" title="hover text">
+<img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed1.PNG" width="full" title="hover text">
+<img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed_2.PNG" width="full" title="hover text">
+<img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed_3.PNG" width="full" title="hover text">
+<img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed_4.PNG" width="full" title="hover text">
