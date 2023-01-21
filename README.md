@@ -2,7 +2,7 @@
 
 Noteed is a free minimal app that helps you write and manage your thoughts or todo lists.
 
-Give it a try:
+Give it a try: https://noteed-lime.vercel.app/
 
 ## Tech Stack
 
