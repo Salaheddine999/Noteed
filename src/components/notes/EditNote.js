@@ -118,15 +118,21 @@ const EditNote = () => {
                     }
                 </div>
             </div>
-            <div className="grid grid-cols-6 gap-4 justify-items-arround">
-                <input type="text" placeholder="Write Your Note's title..." className="input input-ghost mb-8 text-4xl p-4 col-start-2 col-span-4"
-                value={title}
-                onChange={(e)=>setTitle(e.target.value)}/>
+            {isFetching ?          
+                <div className="grid justify-items-center">
+                    <Spinner/>
+                </div> 
+                :
+                <div className="grid grid-cols-6 gap-4 justify-items-arround">
+                    <input type="text" placeholder="Write Your Note's title..." className="input input-ghost mb-8 text-4xl p-4 col-start-2 col-span-4"
+                    value={title}
+                    onChange={(e)=>setTitle(e.target.value)}/>
 
-                <textarea className="textarea textarea-ghost text-2xl col-start-2 col-span-4 h-60" placeholder="Your thoughts..."
-                value={body}
-                onChange={(e)=>setBody(e.target.value)}></textarea>
-            </div>
+                    <textarea className="textarea textarea-ghost text-2xl col-start-2 col-span-4 h-60" placeholder="Your thoughts..."
+                    value={body}
+                    onChange={(e)=>setBody(e.target.value)}></textarea>
+                </div>
+            }
         </form>
         </div>
      );
