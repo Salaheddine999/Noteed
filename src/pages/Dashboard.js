@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const Dashboard = () => {
 
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortOrder, setSortOrder] = useState('desc');
   const { user, isAuthenticated } = useAuth0();
   const { email } = user
 
@@ -35,8 +35,8 @@ const Dashboard = () => {
           <div className="flex-none">  
             <select className="select select-ghost select-md mr-3">
               <option selected disabled>Sort by</option>
-              <option onClick={()=>setSortOrder('asc')}>New</option>
-              <option onClick={()=>setSortOrder('desc')}>Old</option>
+              <option onClick={()=>setSortOrder('asc')}>Old</option>
+              <option onClick={()=>setSortOrder('desc')}>New</option>
             </select>
             <Link className="btn gap-2" to={"/add-note"}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
