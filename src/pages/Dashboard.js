@@ -17,7 +17,7 @@ const Dashboard = () => {
     if (sortOrder === 'asc') {
         return new Date(a.created_at) - new Date(b.created_at)
     } else {
-      return new Date(b.created_at) - new Date(a.created_at)
+        return new Date(b.created_at) - new Date(a.created_at)
     }
   })
 
@@ -32,12 +32,19 @@ const Dashboard = () => {
           <div className="flex-1">
             <p className="font-semibold text-lg">Notes list</p>
           </div>
-          <div className="flex-none">  
-            <select className="select select-ghost select-md mr-3">
-              <option selected disabled>Sort by</option>
-              <option onClick={()=>setSortOrder('asc')}>Old</option>
-              <option onClick={()=>setSortOrder('desc')}>New</option>
-            </select>
+          <div className="flex-none">
+            <p className="text-sm font-semibold mr-2">Sort by</p>
+            <div className="dropdown dropdown-end mr-3">
+              <label tabIndex={0} className="btn btn-outline btn-accent m-1 normal-case">{sortOrder === 'desc' ? 'Newest' : 'Oldest'}&nbsp;
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                  <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clipRule="evenodd" />
+                </svg>
+              </label>
+              <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-36">
+                <li><a onClick={()=>setSortOrder('desc')} className="text-sm">Newest</a></li>
+                <li><a onClick={()=>setSortOrder('asc')} className="text-sm">Oldest</a></li>
+              </ul>
+            </div>
             <Link className="btn gap-2" to={"/add-note"}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.5v15m7.5-7.5h-15" />

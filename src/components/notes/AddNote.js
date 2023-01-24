@@ -25,14 +25,20 @@ const AddNote = () => {
 
     const addNote =(e)=>{
         e.preventDefault()
-        try {
-            noteMutation(noteData)
-            toast.success("Your note was saved successfully")
-            setTitle('')
-            setBody('')
-        } catch (error) {
-            toast.error("Something went wrong")
-        }  
+        if (title==='') {
+            toast.error('Missing title!')
+        } else {
+            try {
+                noteMutation(noteData)
+                toast.success("Your note was saved successfully")
+                setTitle('')
+                setBody('')
+            } catch (error) {
+                toast.error("Something went wrong")
+            }  
+        }
+       
+       
     }
     const styles = reactCSS({
         'default': {

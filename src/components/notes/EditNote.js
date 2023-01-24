@@ -36,7 +36,6 @@ const EditNote = () => {
 
     const noteMutation = useMutation(updateNote => {
         return axios.post(`${api}/${id}`, updateNote)
-       
        },{
         onSuccess: () =>{
             queryClient.invalidateQueries('notes')
@@ -45,12 +44,18 @@ const EditNote = () => {
 
     const updateNote = e =>{
         e.preventDefault()
-        try {
-            noteMutation.mutate({title:title, body:body, user_id: email, color:color})
-            toast.success('Note updated successfully!')
-        } catch (error) {
-            toast.error('Something went wrong!')
+
+        if (title==='') {
+            toast.error('Missing title!')
+        } else {      
+            try {
+                noteMutation.mutate({title:title, body:body, user_id: email, color:color})
+                toast.success('Note updated successfully!')
+            } catch (error) {
+                toast.error('Something went wrong!')
+            }
         }
+        
     }
 
     const styles = reactCSS({
@@ -91,7 +96,7 @@ const EditNote = () => {
         <div className="flex items-center justify-between mb-12 mt-20">
                 <Link className="text-xl font-semibold" to={"/dashboard"}> ←Back</Link>
                 <div className="flex justify-end">
-                    <div className="" style={ styles.swatch } onClick={()=>setShowColorPicker(showColorPicker => !showColorPicker)}>
+                    <div style={ styles.swatch } onClick={()=>setShowColorPicker(showColorPicker => !showColorPicker)}>
                         <div className="flex">
                             <div className="text-sm xl:mx-4 pt-2 lg:mx-4 pt-3 mx-2 md:pt-3 mx-2 ">Note color</div>
                             <div style={ styles.color }/>
