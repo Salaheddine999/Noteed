@@ -29,6 +29,6 @@ $ npm start
 ## Screenshots
 
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed1.PNG" width="full" title="hover text">
-<img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed2.PNG" width="full" title="hover text">
+<img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed_2updated.PNG" width="full" title="hover text">
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed3.PNG" width="full" title="hover text">
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed4.PNG" width="full" title="hover text">
