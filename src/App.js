@@ -32,7 +32,7 @@ function App() {
         </div>
       </BrowserRouter>
       <ToastContainer 
-      autoClose={1000}
+      autoClose={1500}
       position="bottom-center"
       hideProgressBar={true}
       closeOnClick

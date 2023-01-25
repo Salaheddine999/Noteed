@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import NoteList from "../components/notes/NoteList";
 import Spinner from "../components/spinner/Spinner";
-import { useNotesData } from "../hooks/useNote";
+import { useNotesData, usePinnedNotes } from "../hooks/useNote";
 import { useState } from "react";
 
 const Dashboard = () => {
@@ -12,6 +12,7 @@ const Dashboard = () => {
   const { email } = user
 
   const {data, isFetching} = useNotesData(email)
+  const {data: pinnedNotes} = usePinnedNotes(email)
 
   const sortedData = data?.data.sort((a, b) => {
     if (sortOrder === 'asc') {
@@ -59,9 +60,13 @@ const Dashboard = () => {
               <Spinner/>
           </div>
         :
-          ( sortedData?.length > 0?
+          ( sortedData?.length > 0 || pinnedNotes?.data.length > 0 ?
             (
             <div className="grid grid-cols-1 gap-8 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
+              {pinnedNotes?.data.map(note=>(
+                  <NoteList key={note.id} note={note}/>
+              ))}
+              
               {sortedData?.map(note=>(
                   <NoteList key={note.id} note={note}/>
               ))}

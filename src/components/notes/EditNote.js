@@ -21,6 +21,7 @@ const EditNote = () => {
     const[title, setTitle] = useState('')
     const[body, setBody] = useState('')
     const[color, setColor] = useState('')
+    const[pinned, setPinned] = useState()
     const[showColorPicker, setShowColorPicker] = useState(false)
     const{email} = user
 
@@ -29,7 +30,8 @@ const EditNote = () => {
         .then(data=>{
             setTitle(data?.data.title)
             setBody(data?.data.body)
-            setColor(data.data.color)
+            setColor(data?.data.color)
+            setPinned(data?.data.pinned)
             setIsfetching(false)
         });
     },[])
@@ -49,7 +51,7 @@ const EditNote = () => {
             toast.error('Missing title!')
         } else {      
             try {
-                noteMutation.mutate({title:title, body:body, user_id: email, color:color})
+                noteMutation.mutate({title:title, body:body, user_id: email, color:color, pinned:pinned})
                 toast.success('Note updated successfully!')
             } catch (error) {
                 toast.error('Something went wrong!')
