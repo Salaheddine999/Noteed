@@ -10,25 +10,9 @@ I used React and Daisy UI (Tailwind CSS component library) on the frontend. And 
 and to generate RESTful API. And to integrate the backend with the frontend I used React-Query. I also used Auth0 to add authentication and authorization services to the app.
 
 
-### Installation
-
-Install the npm packages:
-
-```
-$ npm install
-```
-
-## Usage
-
-And then run the app locally:
-
-```
-$ npm start
-```
-
 ## Screenshots
 
-<img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed1.PNG" width="full" title="hover text">
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed_2updated.PNG" width="full" title="hover text">
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed3.PNG" width="full" title="hover text">
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed4.PNG" width="full" title="hover text">
+<img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed1.PNG" width="full" title="hover text">
