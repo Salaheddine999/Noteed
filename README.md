@@ -2,12 +2,12 @@
 
 Noteed is a free minimal app that helps you write and manage your thoughts or todo lists.
 
-Give it a try: https://noteed-lime.vercel.app/
+I've used Vercel for the deployment. Give it a try: https://noteed-lime.vercel.app/
 
 ## Tech Stack
-
-I used React and Daisy UI (Tailwind CSS component library) on the frontend. And for the backend I used 'xano' to create database to store notes,
-and to generate RESTful API. And to integrate the backend with the frontend I used React-Query. I also used Auth0 to add authentication and authorization services to the app.
+- Front-end: React, React Query, React Router, Tailwind CSS (Daisy UI). 
+- Back-end: Xano to store notes, and generate RESTful APIs.
+- Authentication: Auth0.
 
 
 ## Screenshots
@@ -16,3 +16,30 @@ and to generate RESTful API. And to integrate the backend with the frontend I us
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed3.PNG" width="full" title="hover text">
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed4.PNG" width="full" title="hover text">
 <img src="https://github.com/Salaheddine999/Noteed/blob/main/src/assets/noteed1.PNG" width="full" title="hover text">
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://link-to-project
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm start
+```
