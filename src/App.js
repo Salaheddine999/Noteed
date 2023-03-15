@@ -9,21 +9,26 @@ import AddNote from './components/notes/AddNote';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditNote from './components/notes/EditNote';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 const queryClient = new QueryClient()
 
+const ProtectedRoute = ({ component, ...args }) => {
+  const Component = withAuthenticationRequired(component, args);
+  return <Component />;
+};
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <div className='justify-arround mt-3 mx-12'>
+        <div className='justify-arround mt-3 mx-8 lg:mx-12 md:mx-12 sm:mx-12'>
           <Auth0ProviderWithNavigate>
             <Navbar/>
             <main className='px-3 pb-12'>
               <Routes>
                 <Route path='/' element={<Home/>}/>
-                <Route path='/dashboard' element={<Dashboard/>}/>
+                <Route path='/dashboard' element={<ProtectedRoute component={Dashboard} />}/>
                 <Route path='/add-note' element={<AddNote/>}/>
                 <Route path='/edit-note/:id' element={<EditNote/>}/>
               </Routes>
@@ -36,7 +41,7 @@ function App() {
       position="bottom-center"
       hideProgressBar={true}
       closeOnClick
-      />
+      style={{ width: 'auto' }}/>
     </QueryClientProvider>
   );
 }

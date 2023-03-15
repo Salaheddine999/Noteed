@@ -10,9 +10,9 @@ const Navbar = () => {
 
     return ( 
         <>
-        <div className="navbar bg-base-400">
+        <div className="navbar bg-base-400 ">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-3xl font-mono">✏️Noteed</a>
+                <a className="btn btn-ghost normal-case text-3xl font-semibold -ml-8 lg:ml-0 md:ml-0 sm:ml-0">✏️Noteed</a>
             </div>
             {isAuthenticated &&
             <>

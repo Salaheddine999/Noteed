@@ -35,7 +35,7 @@ export const useNotesData = (email) => {
 //Fetch all pinned notes by use
 export const usePinnedNotes = (email) =>{
   return useQuery('pinned_notes', ()=>fetchPinnedNotes(email),{
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
   })
 }
 

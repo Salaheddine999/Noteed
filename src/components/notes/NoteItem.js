@@ -21,18 +21,18 @@ const NoteItem = ({note}) => {
 
     const {mutate:noteMutation} = useDeleteNote()
     
-    const {data: pinnedNotes} = usePinnedNotes(email)
+    //const {data: pinnedNotes} = usePinnedNotes(email)
 
     const queryClient = useQueryClient()
 
-    const notePinnMutation = useMutation(updateNote => {
-        return axios.post(`${api}/${id}`, updateNote)
-       },{
-        onSuccess: () =>{
-            queryClient.invalidateQueries('pinned_notes')
-            queryClient.invalidateQueries('notes')
-       }
-   })
+//     const notePinnMutation = useMutation(updateNote => {
+//         return axios.post(`${api}/${id}`, updateNote)
+//        },{
+//         onSuccess: () =>{
+//             queryClient.invalidateQueries('pinned_notes')
+//             queryClient.invalidateQueries('notes')
+//        }
+//    })
 
     const deleteNote = () =>{
         try {
@@ -43,27 +43,27 @@ const NoteItem = ({note}) => {
         }  
     }
 
-    const handelChange = () =>{
-        notePinnMutation.mutate({title:title, body:body, user_id: email, color:color, pinned:!pinned})
-    }
+    // const handelChange = () =>{
+    //     notePinnMutation.mutate({title:title, body:body, user_id: email, color:color, pinned:!pinned})
+    // }
 
     return ( 
         <>
-        <div className='w-90 m-1' key={id} style={{background: `${color}`}}>
-                <div className="card-body" >
+        <div className='w-90 m-1 rounded-md' key={id} style={{background: `${color}`}}>
+                <div className="card-body">
                     <div className="dropdown dropdown-end">
                         <div className="grid grid-cols-2">
-                            <h2 className="card-title col-start-1 col-end-6">{title}</h2>
+                            <h2 className="card-title col-start-1 col-end-6 font-medium">{title}</h2>
                             <div className="card-actions justify-end col-end-7 col-span-1">
-                                {pinned ? 
+                                {/* {pinned ? 
                                     <RiPushpin2Line className="w-4 h-4" onClick={handelChange}/>
                                     : 
                                     (pinnedNotes?.data.length < 3 || pinned === true ?
                                         <RiPushpinLine className="w-4 h-4" onClick={handelChange}/>
                                         :
                                         <TbPinnedOff/>) 
-                                }
-                                <IoEllipsisHorizontal tabIndex={0} />
+                                }  */}
+                                <button><IoEllipsisHorizontal tabIndex={0} /></button>
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box w-52">
