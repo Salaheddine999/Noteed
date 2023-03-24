@@ -22,7 +22,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <div className='justify-arround mt-3 mx-8 lg:mx-12 md:mx-12 sm:mx-12'>
+        <div className='max-w-7xl mx-auto justify-arround mt-3'>
           <Auth0ProviderWithNavigate>
             <Navbar/>
             <main className='px-3 pb-12'>
