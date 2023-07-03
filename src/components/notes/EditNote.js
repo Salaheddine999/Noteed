@@ -77,7 +77,7 @@ const EditNote = () => {
             popover: {
                 position: 'absolute',
                 top:'220px',
-                right:'66px'
+                //right:'66px'
             },
             cover: {
                 zIndex: '1',
@@ -111,7 +111,7 @@ const EditNote = () => {
                     <div className="divider divider-horizontal"></div>
                     <Link className="btn btn-secondary btn-outline rounded-md font-normal mr-2 md:btn-md lg:btn-md xl:btn-md sm:btn-sm" to={"/dashboard"}>Cancel</Link>
                     {showColorPicker&&(
-                        <div style={ styles.popover }>
+                        <div className="-mr-[22px]" style={ styles.popover }>
                             <div style={ styles.cover }>
                                 <TwitterPicker
                                 styles={styles.picker}
