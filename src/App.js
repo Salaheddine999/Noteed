@@ -22,7 +22,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <div className='max-w-7xl sm:mx-auto justify-arround mt-3 mx-6 '>
+        <div className='max-w-7xl sm:mx-auto justify-arround mt-3 mx-6'>
           <Auth0ProviderWithNavigate>
             <Navbar/>
             <main className='px-3 pb-12'>
@@ -41,7 +41,8 @@ function App() {
       position="bottom-center"
       hideProgressBar={true}
       closeOnClick
-      style={{ width: 'auto' }}/>
+      style={{ width: 'auto' }}
+      />
     </QueryClientProvider>
   );
 }

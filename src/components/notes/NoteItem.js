@@ -53,7 +53,7 @@ const NoteItem = ({note}) => {
                 <div className="card-body">
                     <div className="dropdown dropdown-end">
                         <div className="grid grid-cols-2">
-                            <h2 className="card-title col-start-1 col-end-6 font-medium">{title}</h2>
+                            <h2 className="card-title col-start-1 col-end-6 font-medium text-black">{title}</h2>
                             <div className="card-actions justify-end col-end-7 col-span-1">
                                 {/* {pinned ? 
                                     <RiPushpin2Line className="w-4 h-4" onClick={handelChange}/>
@@ -63,16 +63,16 @@ const NoteItem = ({note}) => {
                                         :
                                         <TbPinnedOff/>) 
                                 }  */}
-                                <button><IoEllipsisHorizontal tabIndex={0} /></button>
+                                <button><IoEllipsisHorizontal tabIndex={0} className="text-black"/></button>
                             </div>
                         </div>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><Link to={`/edit-note/${id}`}><IoPencilOutline/>Edit</Link></li>
-                            <li><label htmlFor={`my-modal-${note.id}`}><IoTrashOutline/>Delete</label></li>
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box rounded-md w-52">
+                            <li><Link to={`/edit-note/${id}`} className="rounded-md"><IoPencilOutline/>Edit</Link></li>
+                            <li><label htmlFor={`my-modal-${note.id}`} className="rounded-md"><IoTrashOutline/>Delete</label></li>
                         </ul>
                     </div>
                 <Link to={`/edit-note/${id}`}>
-                    <p>{body}</p>                    
+                    <p className="text-black">{body}</p>                    
                 </Link>
                 </div>
             

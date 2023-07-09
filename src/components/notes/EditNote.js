@@ -77,7 +77,7 @@ const EditNote = () => {
             popover: {
                 position: 'absolute',
                 top:'220px',
-                //right:'66px'
+                //right:'66px',    
             },
             cover: {
                 zIndex: '1',
@@ -89,7 +89,7 @@ const EditNote = () => {
             picker :{
                 position:'relative',
                 zIndex: '3',
-                top:'150px'
+                top:'150px',
               }
 
           },
