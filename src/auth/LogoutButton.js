@@ -5,7 +5,7 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <div className="justify-center">
+    <div className="justify-center rounded-md">
       <a onClick={() => logout({ returnTo: window.location.origin })} className="link link-hover">
         Log Out
       </a>

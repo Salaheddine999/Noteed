@@ -111,7 +111,7 @@ const EditNote = () => {
                     <div className="divider divider-horizontal"></div>
                     <Link className="btn btn-secondary btn-outline rounded-md font-normal mr-2 md:btn-md lg:btn-md xl:btn-md sm:btn-sm" to={"/dashboard"}>Cancel</Link>
                     {showColorPicker&&(
-                        <div className="-mr-[22px]" style={ styles.popover }>
+                        <div className="sm:-mr-[22px] sm:mt-[0px] mt-[68px] -mr-[10px]" style={ styles.popover }>
                             <div style={ styles.cover }>
                                 <TwitterPicker
                                 styles={styles.picker}
@@ -135,11 +135,11 @@ const EditNote = () => {
                 </div> 
                 :
                 <div className="grid grid-cols-1 sm:grid-cols-6 gap-0 sm:gap-4 justify-items-arround">
-                    <input type="text" placeholder="Write Your Note's title..." className="input input-ghost mb-8 text-3xl sm:text-4xl p-4 col-start-1 col-span-2 sm:col-start-2 sm:col-span-4"
+                    <input type="text" placeholder="Write Your Note's title..." className="input input-ghost mb-8 text-3xl sm:text-4xl p-4 col-start-1 col-span-2 sm:col-start-2 sm:col-span-4 focus:border-transparent focus:outline-none"
                     value={title}
                     onChange={(e)=>setTitle(e.target.value)}/>
 
-                    <textarea className="textarea textarea-ghost text-xl sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-60" placeholder="Your thoughts..."
+                    <textarea className="textarea textarea-ghost text-xl sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-60 focus:border-transparent focus:outline-none" placeholder="Your thoughts..."
                     value={body}
                     onChange={(e)=>setBody(e.target.value)}></textarea>
                 </div>
