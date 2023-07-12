@@ -12,10 +12,10 @@ I've used Vercel for the deployment. Give it a try: https://noteed-lime.vercel.a
 
 ## Screenshots
 
-<img src="./src/assets/screen2.PNG" width="full" title="noteed dashboard">
-<img src="./src/assets/screen3.PNG" width="full" title="noteed edit">
-<img src="./src/assets/screen4.PNG" width="full" title="noteed add">
-<img src="./src/assets/screen1.PNG" width="full" title="noteed login">
+<img src="./src/assets/capture2.jpeg" width="full" title="noteed dashboard">
+<img src="./src/assets/capture3.jpeg" width="full" title="noteed edit">
+<img src="./src/assets/capture4.jpeg" width="full" title="noteed add">
+<img src="./src/assets/capture1.jpeg" width="full" title="noteed login">
 
 ## Run Locally
 
