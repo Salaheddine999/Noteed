@@ -32,7 +32,7 @@ const Navbar = () => {
 
     return ( 
         <>
-        <div className="navbar bg-base-400 ">
+        <div className="navbar">
             <div className="flex-1">
                 <a className="normal-case text-3xl font-semibold -ml-4 sm:ml-4">✏️Noteed</a>
             </div>

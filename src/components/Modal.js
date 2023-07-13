@@ -9,8 +9,8 @@ const Modal = ({deleteNote, id}) => {
             <h3 className="text-xl font-medium">Delete Note</h3>
             <p className="py-4">Are you sure you want to delete this note?</p>
             <div className="modal-action">
-                <label htmlFor={`my-modal-${id}`} className="btn btn-warning btn-outline rounded-md font-normal" onClick={deleteNote}>Delete</label>
-                <label htmlFor={`my-modal-${id}`} className="btn btn-outline rounded-md font-normal">Cancel</label>
+                <label htmlFor={`my-modal-${id}`} className="btn btn-warning btn-outline rounded-md font-normal normal-case" onClick={deleteNote}>Delete</label>
+                <label htmlFor={`my-modal-${id}`} className="btn btn-outline rounded-md font-normal normal-case">Cancel</label>
             </div>
             </div>
             </div>

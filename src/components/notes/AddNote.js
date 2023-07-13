@@ -29,7 +29,9 @@ const AddNote = () => {
         e.preventDefault()
         if (title==='') {
             toast.error('Missing title!')
-        } else {
+        } else if (body ===''){
+            toast.error('Missing body!')
+        } else{
             try {
                 noteMutation(noteData)
                 toast.success("Your note was saved successfully")
@@ -79,7 +81,7 @@ const AddNote = () => {
         <div className="-mx-4 lg:mx-8 md:mx-4 sm:mx-2">
         <form onSubmit={addNote}>
             <div className="lg:flex md:flex sm:flex items-center justify-between mb-12 mt-20">
-                <Link className="text-xl font-medium" to={"/dashboard"}> ←Back</Link>
+                <Link className="text-xl font-medium" to={"/dashboard"}> ← Back</Link>
                 <div className="flex justify-end mt-10 lg:mt-0 md:mt-0 sm:mt-0">
                     <div className="" style={ styles.swatch } onClick={()=>setShowColorPicker(showColorPicker => !showColorPicker)}>
                         <div className="flex">
@@ -88,9 +90,9 @@ const AddNote = () => {
                         </div>
                     </div>
                     <div className="divider divider-horizontal"></div>
-                    <Link className="btn btn-secondary btn-outline mr-2 font-normal rounded-md md:btn-md lg:btn-md xl:btn-md sm:btn-sm" to={"/dashboard"}>Cancel</Link>
+                    <Link className="btn btn-secondary btn-outline mr-2 font-normal rounded-md md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case" to={"/dashboard"}>Cancel</Link>
                     {showColorPicker&&(
-                        <div className="sm:-mr-[22px] sm:mt-[0px] mt-[68px] -mr-[10px]" style={ styles.popover }>
+                        <div className="sm:-mr-[36px] sm:mt-[0px] mt-[68px] -mr-[10px]" style={ styles.popover }>
                             <div style={ styles.cover }>
                                 <TwitterPicker
                                 styles={styles.picker}
@@ -102,14 +104,14 @@ const AddNote = () => {
                         </div>
                     )}
                     {noteMutation.isLoading ?
-                        <button className="btn loading rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm">loading</button> 
+                        <button className="btn btn-secondary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">Loading...</button> 
                         :
-                        <button type="submit" className="btn btn-secondary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm">Save</button>
+                        <button type="submit" className="btn btn-secondary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">Save</button>
                     }
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-6 gap-0 sm:gap-4 justify-items-arround">
-                <input type="text" placeholder="Write Your Note's title..." className="input input-ghost mb-8 text-3xl sm:text-4xl p-4 col-start-1 col-span-2 sm:col-start-2 sm:col-span-4 focus:border-transparent focus:outline-none"
+            <div className="grid grid-cols-1 sm:grid-cols-6 gap-0 sm:gap-4">
+                <input type="text" placeholder="Write your note's title..." className="input input-ghost mb-8 text-3xl sm:text-4xl p-4 col-start-1 col-span-2 sm:col-start-2 sm:col-span-4 focus:border-transparent focus:outline-none"
                 value={title}
                 onChange={(e)=>setTitle(e.target.value)}/>
 
