@@ -104,7 +104,10 @@ const AddNote = () => {
                         </div>
                     )}
                     {noteMutation.isLoading ?
-                        <button className="btn btn-secondary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">Loading...</button> 
+                        <button className="btn btn-secondary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">
+                              <span className="loading loading-spinner"></span>
+                                Loading
+                        </button> 
                         :
                         <button type="submit" className="btn btn-secondary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">Save</button>
                     }

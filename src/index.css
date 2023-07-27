@@ -26,6 +26,7 @@ code {
 }
 
 .card-body h2{
+  width: 250px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
