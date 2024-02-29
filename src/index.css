@@ -1,13 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=Inter:wght@300;400;500&display=swap');
+
+html,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+ul,
+li,
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'InterTight', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  
+}
 
 body {
-  margin: 0;
-  font-family: 'Inter Tight', sans-serif;
-
-  ;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,4 +51,34 @@ code {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+@font-face {
+  font-family: 'InterTight';
+  src: url('./assets/inter-tight-font/InterTight-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'InterTight';
+  src: url('./assets/inter-tight-font/InterTight-SemiBold.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'InterTight';
+  src: url('./assets/inter-tight-font/InterTight-Bold.ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'InterTight';
+  src: url('./assets/inter-tight-font/InterTight-Black.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'InterTight';
+  src: url('./assets/inter-tight-font/InterTight-Light.ttf');
+  font-weight: 300;
 }

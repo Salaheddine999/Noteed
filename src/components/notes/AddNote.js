@@ -90,7 +90,7 @@ const AddNote = () => {
                         </div>
                     </div>
                     <div className="divider divider-horizontal"></div>
-                    <Link className="btn btn-secondary btn-outline mr-2 font-normal rounded-md md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case" to={"/dashboard"}>Cancel</Link>
+                    <Link className="btn btn-secondary btn-outline mr-2 font-normal rounded-md border-2 md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case" to={"/dashboard"}>Cancel</Link>
                     {showColorPicker&&(
                         <div className="sm:-mr-[36px] sm:mt-[0px] mt-[68px] -mr-[10px]" style={ styles.popover }>
                             <div style={ styles.cover }>

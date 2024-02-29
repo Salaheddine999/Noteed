@@ -7,10 +7,11 @@ const LoginButton = () => {
 
   return (
     <div className="justify-center ">
-      <button onClick={() => loginWithRedirect()} className="btn btn-primary font-normal rounded-md">Log In</button>
+      <button onClick={() => loginWithRedirect()} className="btn capitalize btn-primary font-normal rounded-md mb-4 text-md">Login</button>
     </div>
   );
   
 };
+
 
 export default LoginButton;

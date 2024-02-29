@@ -7,7 +7,7 @@ const LogoutButton = () => {
   return (
     <div className="justify-center rounded-md">
       <a onClick={() => logout({ returnTo: window.location.origin })} className="link link-hover">
-        Log Out
+        Log out
       </a>
     </div>
   );

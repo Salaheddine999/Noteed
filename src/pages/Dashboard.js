@@ -48,7 +48,7 @@ const Dashboard = () => {
               <div className="flex-none">
                 <p className="text-sm font-normal mr-2">Sort by</p>
                 <div className="dropdown dropdown-end mr-3">
-                  <label tabIndex={0} className="btn btn-outline m-1 normal-case rounded-md font-normal">{sortOrder === 'desc' ? 'Newest' : 'Oldest'}&nbsp;
+                  <label tabIndex={0} className="btn btn-outline m-1 normal-case rounded-md font-normal border-2">{sortOrder === 'desc' ? 'Newest' : 'Oldest'}&nbsp;
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                       <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clipRule="evenodd" />
                     </svg>
