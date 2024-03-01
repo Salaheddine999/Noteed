@@ -1,6 +1,6 @@
 # Noteed
 
-Noteed is a free minimal app that helps you write and manage your thoughts or todo lists, with the ability to access your notes from different devices.
+A versatile note-taking application that empowers users to effortlessly write and manage diverse content, while offering seamless access to their notes from various devices.
 
 I've used Vercel for the deployment. Give it a try: https://noteed-lime.vercel.app/
 
@@ -10,12 +10,9 @@ I've used Vercel for the deployment. Give it a try: https://noteed-lime.vercel.a
 - Back-end: Xano to store notes, and generate RESTful APIs.
 - Authentication: Auth0.
 
-## Screenshots
+## Screenshot
 
-<img src="./src/assets/capture2.jpeg" width="full" title="noteed dashboard">
-<img src="./src/assets/capture3.jpeg" width="full" title="noteed edit">
-<img src="./src/assets/capture4.jpeg" width="full" title="noteed add">
-<img src="./src/assets/capture1.jpeg" width="full" title="noteed login">
+<img src="./src/assets/long.png" width="full" title="noteed">
 
 ## Run Locally
 
