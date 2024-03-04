@@ -4,6 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from "react-router-dom";
 import preview1 from "../assets/shot1.png";
 import preview2 from "../assets/shot2.png";
+import GetStarted from "../auth/GetStarted";
 
 
 const Home = () => {
@@ -132,6 +133,19 @@ const Home = () => {
                         />
                         </div>
                     </div>
+                    </section>
+                    <section className="w-full py-12 md:py-24 lg:py-32 flex items-center justify-center">
+                        <div className="container flex flex-col items-center gap-4 px-4 md:px-6 text-center">
+                        <div className="space-y-2">
+                            <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">Get Organized, Get Noted!</h2>
+                            <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                            Start your note-taking journey with Noteed and streamline your productivity today!
+                            </p>
+                        </div>
+                        <div className="flex flex-col gap-4 max-w-sm w-full">
+                            <GetStarted/>
+                        </div>
+                        </div>
                     </section>
                 </main>
                 <footer className="flex flex-col gap-2 sm:flex-row pb-2 pt-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
