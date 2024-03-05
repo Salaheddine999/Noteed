@@ -12,7 +12,7 @@ I've used Vercel for the deployment. Give it a try: https://noteed-lime.vercel.a
 
 ## Screenshot
 
-<img src="./src/assets/long.png" width="full" title="noteed">
+<img src="./src/assets/long_shot.png" width="full" title="noteed">
 
 ## Run Locally
 

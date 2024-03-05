@@ -1,6 +1,3 @@
-import {IoEllipsisHorizontal, IoTrashOutline, IoPencilOutline} from "react-icons/io5"
-import {RiPushpinLine, RiPushpin2Line} from "react-icons/ri"
-import {TbPinnedOff} from "react-icons/tb"
 import Modal from "../Modal";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -9,6 +6,7 @@ import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 import { useAuth0 } from "@auth0/auth0-react";
 import { usePinnedNotes } from "../../hooks/useNote";
+import { TbTrash } from "react-icons/tb";
 
 const NoteItem = ({note}) => {
 
@@ -49,11 +47,11 @@ const NoteItem = ({note}) => {
 
     return ( 
         <>
-        <div className='w-90 m-1 rounded-md' key={id} style={{background: `${color}`}}>
-                <div className="card-body">
+        <div className='w-full rounded-md group' key={id} style={{background: `color-mix(in srgb, ${color} , transparent 20%)`}}>
+                <div className="card-body p-6">
                     <div className="dropdown dropdown-end">
                         <div className="grid grid-cols-2">
-                            <h2 className="card-title col-start-1 col-end-6 font-medium text-black">{title}</h2>
+                            <h2 className="card-title col-start-1 col-end-6 font-medium text-xl text-black">{title}</h2>
                             <div className="card-actions justify-end col-end-7 col-span-1">
                                 {/* {pinned ? 
                                     <RiPushpin2Line className="w-4 h-4" onClick={handelChange}/>
@@ -63,19 +61,15 @@ const NoteItem = ({note}) => {
                                         :
                                         <TbPinnedOff/>) 
                                 }  */}
-                                <button><IoEllipsisHorizontal tabIndex={0} className="text-black"/></button>
+                                <label htmlFor={`my-modal-${note.id}`} className="rounded-md md:opacity-0 lg:opacity-0 sm:opacity-100 group-hover:opacity-100 transition-opacity cursor-pointer text-black"><TbTrash  className="w-[18px] h-[18px]"/></label>
                             </div>
                         </div>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box rounded-md w-52">
-                            <li><Link to={`/edit-note/${id}`} className="rounded-md"><IoPencilOutline/>Edit</Link></li>
-                            <li><label htmlFor={`my-modal-${note.id}`} className="rounded-md"><IoTrashOutline/>Delete</label></li>
-                        </ul>
                     </div>
                 <Link to={`/edit-note/${id}`}>
-                    <p className="text-black">{body}</p>                    
+                    <p className="font-normal text-base leading-[1.4] text-black">{body}</p>                    
                 </Link>
                 </div>
-            
+                                
           </div>
           <Modal deleteNote={deleteNote} id={id}/>
         </>

@@ -2,7 +2,7 @@ import SignupButton from "../auth/SignupButton";
 import LoginButton from "../auth/LoginButton";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from "react-router-dom";
-import preview1 from "../assets/shot1.png";
+import preview1 from "../assets/new_shot1.png";
 import preview2 from "../assets/shot2.png";
 import GetStarted from "../auth/GetStarted";
 
@@ -99,9 +99,9 @@ const Home = () => {
                             <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">Happy Note Takers</h2>
                             </div>
                         </div>
-                        <div className="mx-auto grid max-w-sm items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
-                            <div className="grid gap-1 p-6 bg-gray-100 rounded-lg text-center">
-                            <p className="text-[15px] text-gray-700">
+                        <div className="mx-auto grid max-w-sm items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-8 lg:max-w-5xl lg:grid-cols-3">
+                            <div className="grid gap-1 p-6 bg-gray-100 rounded-md text-center">
+                            <p className="text-[15px] text-gray-800">
                             Noteed keeps me super organized and focused. The customizable backgrounds are a great bonus!
                             </p>
                             <div className="flex items-center gap-1 justify-center mt-3">
@@ -112,8 +112,8 @@ const Home = () => {
                                 <StarIcon className="w-4 h-4 fill-[#fde950]" />
                             </div>
                             </div>
-                            <div className="grid gap-1 p-6 bg-gray-100 rounded-lg text-center">
-                            <p className="text-[15px] text-gray-700">
+                            <div className="grid gap-1 p-6 bg-gray-100 rounded-md text-center">
+                            <p className="text-[15px] text-gray-800">
                             Noteed has changed the game for me as a student. It's so easy to use, and the design is great.
                             </p>
                             <div className="flex items-center gap-1 justify-center mt-3">
@@ -124,8 +124,8 @@ const Home = () => {
                                 <StarIcon className="w-4 h-4 fill-[#fde950]" />
                             </div>
                             </div>
-                            <div className="grid gap-1 p-6 bg-gray-100 rounded-lg text-center">
-                            <p className="text-[15px] text-gray-700">
+                            <div className="grid gap-1 p-6 bg-gray-100 rounded-md text-center">
+                            <p className="text-[15px] text-gray-800">
                             For all my note-taking needs, I rely on Noteed. Its simplicity and effectiveness make it my top choice
                             </p>
                             <div className="flex items-center gap-1 justify-center mt-3">
@@ -199,12 +199,9 @@ const Home = () => {
                 <footer className="flex flex-col gap-2 sm:flex-row pb-2 pt-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
                     <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Noteed. All rights reserved.</p>
                     <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-                    <a className="text-xs hover:underline underline-offset-4" href="#">
-                        Terms of Service
-                    </a>
-                    <a className="text-xs hover:underline underline-offset-4" href="#">
-                        Privacy
-                    </a>
+                    <p className="text-xs" href="#">
+                        Built & designed by <a className="font-semibold hover:underline underline-offset-4" href="https://twitter.com/salaheddine_ab">Salah eddine</a>
+                    </p>
                     </nav>
                 </footer>
             </div>
