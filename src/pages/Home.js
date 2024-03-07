@@ -205,7 +205,7 @@ const Home = () => {
                     <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Noteed. All rights reserved.</p>
                     <nav className="sm:ml-auto flex gap-4 sm:gap-6">
                     <p className="text-xs" href="#">
-                        Built & designed by <a className="font-semibold hover:underline underline-offset-4" href="https://twitter.com/salaheddine_ab">Salah eddine</a>
+                        Built & designed by <a className="font-medium hover:underline underline-offset-4" href="https://twitter.com/salaheddine_ab">Salah eddine</a>
                     </p>
                     </nav>
                 </footer>
