@@ -78,7 +78,7 @@ const AddNote = () => {
     })
 
     return ( 
-        <div className="-mx-4 lg:mx-8 md:mx-4 sm:mx-2">
+        <div className="-mx-4 lg:mx-8 md:mx-4 sm:mx-2 text-primary">
         <form onSubmit={addNote}>
             <div className="lg:flex md:flex sm:flex items-center justify-between mb-12 mt-20">
                 <Link className="text-xl font-medium" to={"/dashboard"}> ← Back</Link>
@@ -90,7 +90,7 @@ const AddNote = () => {
                         </div>
                     </div>
                     <div className="divider divider-horizontal"></div>
-                    <Link className="btn btn-secondary btn-outline mr-2 font-normal rounded-md border-2 md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case" to={"/dashboard"}>Cancel</Link>
+                    <Link className="btn btn-primary btn-outline mr-2 font-normal rounded-md border-2 md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case" to={"/dashboard"}>Cancel</Link>
                     {showColorPicker&&(
                         <div className="sm:-mr-[36px] sm:mt-[0px] mt-[68px] -mr-[10px]" style={ styles.popover }>
                             <div style={ styles.cover }>
@@ -104,12 +104,12 @@ const AddNote = () => {
                         </div>
                     )}
                     {noteMutation.isLoading ?
-                        <button className="btn btn-secondary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">
+                        <button className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">
                               <span className="loading loading-spinner"></span>
                                 Loading
                         </button> 
                         :
-                        <button type="submit" className="btn btn-secondary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">Save</button>
+                        <button type="submit" className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">Save</button>
                     }
                 </div>
             </div>

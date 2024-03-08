@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import preview1 from "../assets/new_shot1.png";
 import preview2 from "../assets/shot2.png";
 import GetStarted from "../auth/GetStarted";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Home = () => {
 
@@ -12,19 +13,25 @@ const Home = () => {
     const navigate = useNavigate()
 
     return ( 
-        <div className="">
+        <div className="text-primary">
             <div className="flex flex-col min-h-[100dvh]">
                 <main className="flex-1">
-                    <section className="w-full mt-36 mb-24 ">
+                    <section className="w-full mt-28 mb-24 ">
                     <div className="container px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
                             <div className="space-y-2">
-                                {/* <div className="inline-block rounded-full bg-transparent border-gray-800 text-gray-800 border-[1px] px-3 py-1 text-sm animate-pulse">
-                                    New Feature
-                                </div> */}
+                                <span className="relative inline-block overflow-hidden rounded-full p-[1px] mb-4">
+                                    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" />
+                                    <div className="inline-flex h-full w-full cursor-pointer justify-center rounded-full bg-base-100 px-3 py-1 text-xs font-base leading-5 text-secondary backdrop-blur-xl">
+                                        New features ⚡️
+                                    <a className="inline-flex items-center pl-2 text-secondary font-medium" href="https://github.com/Salaheddine999/Noteed" target="_blank">
+                                        Read more
+                                        <AiOutlineArrowRight className="pl-0.5 text-secondary" size={15}/>
+                                    </a>
+                                    </div>
+                                </span>
                                 <h1 className="text-5xl font-semibold sm:text-[58px] tracking-tight">
                                     Your notes. Organized.
-                                    
                                 </h1>
                                 <p className="max-w-[600px] text-gray-500 text-md sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
                                 The beautiful note-taking app for capturing your thoughts. Take notes, make lists, and stay organized.
@@ -44,11 +51,11 @@ const Home = () => {
                                         <h5 className="flex justify-center gap-2 text-sm text-gray-500 dark:text-[#ffffff]">
                                             <div className="underline text-neutral">
                                                 <span className="badge bg-transparent border-none text-neutral">Email:</span>
-                                                test@gmail.com
+                                                demo@email.com
                                             </div>
                                             <div className="underline text-neutral">
                                                 <span className="badge bg-transparent border-none text-neutral">Password:</span>
-                                                Test1234
+                                                Demo1234
                                             </div>
                                         </h5>
                                 </div>
@@ -68,7 +75,7 @@ const Home = () => {
                         width="550"
                         />
                         
-                        <div className="space-y-4">
+                        <div className="space-y-4 text-primary">
                         <h2 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-tight">Features</h2>
                         <ul className="grid gap-4">
                             <li>
@@ -205,7 +212,7 @@ const Home = () => {
                     <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Noteed. All rights reserved.</p>
                     <nav className="sm:ml-auto flex gap-4 sm:gap-6">
                     <p className="text-xs" href="#">
-                        Built & designed by <a className="font-medium hover:underline underline-offset-4" href="https://twitter.com/salaheddine_ab">Salah eddine</a>
+                        Made by <a className="font-medium hover:underline underline-offset-4" href="https://twitter.com/salaheddine_ab" target="_blank">Salah eddine</a>
                     </p>
                     </nav>
                 </footer>

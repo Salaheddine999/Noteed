@@ -25,6 +25,12 @@ function App() {
       <BrowserRouter>
         <AppContent />
       </BrowserRouter>
+      <ToastContainer 
+      autoClose={1500}
+      position="bottom-center"
+      hideProgressBar={true}
+      closeOnClick
+      style={{ width: 'auto' }}/>
     </QueryClientProvider>
   );
 }
@@ -34,15 +40,14 @@ function AppContent() {
   const isHomeRoute = location.pathname === '/'
 
   return (
-    <div className={isHomeRoute ? 'absolute top-0 z-[-2] h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(246,187,218,0.5),rgba(255,255,255,0))]' : ''}>
-
+    <div className={isHomeRoute ? 'absolute top-0 z-[-2] h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(246,187,218,0.35),rgba(255,255,255,0))]' : ''}>
       <div className='max-w-7xl sm:mx-auto justify-arround mt-3 mx-6'>
         <Auth0ProviderWithNavigate>
           <Navbar/>
           <main className='px-3 pb-12'>
             <Routes>
               <Route path='/' element={<Home/>}/>
-              <Route path='/dashboard' element={<ProtectedRoute component={Dashboard} />}/>
+              <Route path='/dashboard' element={<ProtectedRoute component={Dashboard}/>}/>
               <Route path='/add-note' element={<AddNote/>}/>
               <Route path='/edit-note/:id' element={<EditNote/>}/>
             </Routes>

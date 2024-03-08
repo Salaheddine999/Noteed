@@ -34,7 +34,7 @@ const Navbar = () => {
         <>
         <div>
             
-            <header className="lg:px-6 h-14 flex items-center">
+            <header className="lg:px-6 h-14 flex items-center text-primary">
                 <a className="flex items-center justify-center text-3xl font-semibold">
                     ✏️Noteed
                     <span className="sr-only">Noteed</span>

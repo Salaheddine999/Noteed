@@ -46,7 +46,7 @@ const Dashboard = () => {
 
   return (
     isAuthenticated && (
-      <div className="-mx-4 lg:mx-8 md:mx-4 sm:mx-2 bg-red">
+      <div className="-mx-4 lg:mx-8 md:mx-4 sm:mx-2 bg-red text-primary">
         <div className="grid grid-cols-2 mb-10 mt-20">
           <h2 className="text-4xl font-normal lg:text-5xl md:text-5xl sm:text-5xl">Your notes</h2>
         </div>
