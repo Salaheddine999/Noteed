@@ -6,6 +6,7 @@ import preview1 from "../assets/new_shot1.png";
 import preview2 from "../assets/shot2.png";
 import GetStarted from "../auth/GetStarted";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 
@@ -22,12 +23,8 @@ const Home = () => {
                             <div className="space-y-2">
                                 <span className="relative inline-block overflow-hidden rounded-full p-[1px] mb-4">
                                     <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" />
-                                    <div className="inline-flex h-full w-full cursor-pointer justify-center rounded-full bg-base-100 px-3 py-1 text-xs font-base leading-5 text-secondary backdrop-blur-xl">
-                                        New features ⚡️
-                                    <a className="inline-flex items-center pl-2 text-secondary font-medium" href="https://github.com/Salaheddine999/Noteed" target="_blank">
-                                        Read more
-                                        <AiOutlineArrowRight className="pl-0.5 text-secondary" size={15}/>
-                                    </a>
+                                    <div className="inline-flex h-full w-full cursor-pointer justify-center rounded-full bg-base-100 px-3 py-1 text-sm font-base leading-5 text-secondary backdrop-blur-xl">
+                                        New features⚡️
                                     </div>
                                 </span>
                                 <h1 className="text-5xl font-semibold sm:text-[58px] tracking-tight">
@@ -207,13 +204,22 @@ const Home = () => {
                         </div>
                         </div>
                     </section>
+
+                    <section className="w-full py-12 md:py-24 lg:py-32 border-t">
+                        <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
+                            <div className="space-y-4">
+                            <h2 className="text-3xl font-semibold sm:text-3xl md:text-3xl tracking-tight">Contributions</h2>
+                            <p className="text-secondary">
+                                For any suggestions or bugs reporting! Check the <a className="font-semibold" href="https://github.com/Salaheddine999/Noteed">Github repository</a>. Thanks! 
+                            </p>
+                            </div>
+                        </div>
+                    </section>
                 </main>
                 <footer className="flex flex-col gap-2 sm:flex-row pb-2 pt-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-                    <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Noteed. All rights reserved.</p>
+                    <p className="text-xs text-gray-500">© 2024 Noteed | Made by <span className="font-medium">Salah eddine</span></p>
                     <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-                    <p className="text-xs" href="#">
-                        Made by <a className="font-medium hover:underline underline-offset-4" href="https://twitter.com/salaheddine_ab" target="_blank">Salah eddine</a>
-                    </p>
+                    <Link className="text-xs hover:underline underline-offset-4" to="/terms-of-use">Terms of Use</Link>
                     </nav>
                 </footer>
             </div>

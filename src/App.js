@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditNote from './components/notes/EditNote';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
+import TermsOfUse from './pages/TermsOfUse';
 
 const queryClient = new QueryClient()
 
@@ -48,6 +49,7 @@ function AppContent() {
             <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/dashboard' element={<ProtectedRoute component={Dashboard}/>}/>
+              <Route path='/terms-of-use' element={<TermsOfUse/>}/>
               <Route path='/add-note' element={<AddNote/>}/>
               <Route path='/edit-note/:id' element={<EditNote/>}/>
             </Routes>
