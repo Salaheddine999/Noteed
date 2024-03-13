@@ -23,7 +23,7 @@ const Home = () => {
                             <div className="space-y-2">
                                 <span className="relative inline-block overflow-hidden rounded-full p-[1px] mb-4">
                                     <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" />
-                                    <div className="inline-flex h-full w-full cursor-pointer justify-center rounded-full bg-base-100 px-3 py-1 text-sm font-base leading-5 text-secondary backdrop-blur-xl">
+                                    <div className="inline-flex h-full w-full justify-center rounded-full bg-base-100 px-3 py-1 text-sm font-normal leading-5 text-secondary backdrop-blur-xl">
                                         New features⚡️
                                     </div>
                                 </span>
