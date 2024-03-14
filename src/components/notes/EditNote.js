@@ -6,7 +6,10 @@ import { toast } from "react-toastify";
 import { useMutation, useQueryClient } from "react-query";
 import Spinner from "../spinner/Spinner";
 import { TwitterPicker } from "react-color";
-import reactCSS from 'reactcss'
+import reactCSS from 'reactcss';
+import { TbFileExport } from "react-icons/tb";
+import { FiPrinter } from "react-icons/fi";
+
 
 const EditNote = () => {
     const queryClient = useQueryClient()
@@ -63,9 +66,51 @@ const EditNote = () => {
         
     }
 
-    const handleExport = (e) => {
-
+    const handlePrint = (e) => {
         e.preventDefault()
+        const printContent = `
+            <html>
+            <head>
+                <title>Note Print</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 20px;
+                    }
+                    h1 {
+                        font-size: 24px;
+                        margin-bottom: 10px;
+                    }
+                    p {
+                        font-size: 16px;
+                        line-height: 1.5;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>${title}</h1>
+                <p>${body}</p>
+            </body>
+            </html>
+        `;
+
+        if ((title==='') && (body==='')){
+            toast.error('Missing content!')
+        } else {
+            const popupWin = window.open('', '_blank', 'width=600,height=600');
+            popupWin.document.open();
+            popupWin.document.write(printContent);
+            popupWin.document.close();
+            popupWin.print();
+        }
+    };
+
+    const handleExport = (e) => {
+        e.preventDefault()
+        if ((title==='') && (body==='')){
+            toast.error('Missing content!')
+        } else {    
         const fileName = `${title || 'note'}.txt`;
         const content = `${title}\n\n${body}`;
         // const content = `Title: ${title}\nBody: ${body}\nColor: ${color}\nPinned: ${pinned}`;
@@ -77,6 +122,7 @@ const EditNote = () => {
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
+        }
     };
     
 
@@ -164,11 +210,18 @@ const EditNote = () => {
                     value={body}
                     onChange={(e)=>setBody(e.target.value)}></textarea>
                 </div>                
-                <div className="card-footer p-6">
+                <div className="card-footer mt-6">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
                             <div className="flex items-center space-x-2">
-                                <button className="btn btn-outline rounded-md border-2 normal-case text-xs font-normal text-black" onClick={handleExport}>Export</button>
+                                <button className="btn btn-primary btn-outline rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case border-2" onClick={handleExport}>
+                                    Export
+                                    <TbFileExport className="w-5 h-5"/>
+                                </button>
+                                <button className="btn btn-primary btn-outline rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case border-2" onClick={handlePrint}>
+                                    Print
+                                    <FiPrinter className="w-5 h-5"/>
+                                </button>
                             </div>
                         </div>
                     </div>
