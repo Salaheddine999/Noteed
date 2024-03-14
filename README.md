@@ -26,6 +26,10 @@ Here's what you can do with Noteed:
 
 - **Cross-Platform Syncing**: Users can sync their notes across multiple devices, ensuring they always have access to their information.
 
+- **Export**: Users can export their notes as TXT files.
+
+- **Note lock**: Users can lock their notes to prevent editing
+
 ## Run Locally
 
 Clone the project
