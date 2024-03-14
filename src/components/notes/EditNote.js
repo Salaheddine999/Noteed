@@ -9,9 +9,16 @@ import { TwitterPicker } from "react-color";
 import reactCSS from 'reactcss';
 import { TbFileExport } from "react-icons/tb";
 import { FiPrinter } from "react-icons/fi";
-
+import { MdLockOutline, MdLockOpen } from "react-icons/md";
 
 const EditNote = () => {
+
+    const [isLocked, setIsLocked] = useState(false);
+
+    const toggleLock = () => {
+        setIsLocked(prevState => !prevState);
+    };
+
     const queryClient = useQueryClient()
 
     const api = process.env.REACT_APP_ALL_NOTES
@@ -174,14 +181,14 @@ const EditNote = () => {
                     <div className="divider divider-horizontal"></div>
                     <Link className="btn btn-primary btn-outline rounded-md font-normal mr-2 md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case border-2" to={"/dashboard"}>Cancel</Link>
                     {showColorPicker&&(
-                        <div className="sm:-mr-[36px] sm:mt-[0px] mt-[68px] -mr-[10px]" style={ styles.popover }>
-                            <div style={ styles.cover }>
+                        <div className="sm:mr-[5px] sm:mt-[0px] mt-[68px] mr-[8px]" style={ styles.popover }>
+                            <div style={ styles.cover }> 
                                 <TwitterPicker
                                 styles={styles.picker}
                                 colors={['#FECACA','#FED7AA','#d9f99d','#fef08a','#e0f2fe','#bbf7d0','#e9d5ff']} 
                                 color={color}
                                 onChange={updatedColor => setColor(updatedColor.hex)}
-                                />
+                               />
                             </div>
                         </div>
                     )}
@@ -193,6 +200,11 @@ const EditNote = () => {
                         :
                         <button type="submit" className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">Save</button>
                     }
+                    <label className="swap ml-4">
+                        <input type="checkbox" checked={isLocked} onChange={toggleLock}/>
+                        <MdLockOutline className="swap-on fill-current w-6 h-6"/>
+                        <MdLockOpen className="swap-off fill-current w-6 h-6"/>
+                    </label>
                 </div>
             </div>
             {isFetching ?          
@@ -202,15 +214,17 @@ const EditNote = () => {
                 :
                 <>
                 <div className="grid grid-cols-1 sm:grid-cols-6 gap-0 sm:gap-4">
-                    <input type="text" placeholder="Write Your Note's title..." className="input input-ghost mb-8 text-3xl sm:text-4xl p-4 col-start-1 col-span-2 sm:col-start-2 sm:col-span-4 focus:border-transparent focus:outline-none"
+                    <input type="text" placeholder="Write Your Note's title..." className="input input-ghost mb-8 text-3xl sm:text-4xl p-4 col-start-1 col-span-2 sm:col-start-2 sm:col-span-4 focus:border-transparent disabled:bg-transparent disabled:border-transparent focus:outline-none"
                     value={title}
-                    onChange={(e)=>setTitle(e.target.value)}/>
+                    onChange={(e)=>setTitle(e.target.value)}
+                    disabled={isLocked}/>
 
-                    <textarea className="textarea textarea-ghost text-xl sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-60 focus:border-transparent focus:outline-none" placeholder="Your thoughts..."
+                    <textarea className="textarea textarea-ghost text-xl resize-none sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-60 focus:border-transparent focus:outline-none disabled:bg-transparent disabled:border-transparent" placeholder="Your thoughts..."
                     value={body}
-                    onChange={(e)=>setBody(e.target.value)}></textarea>
+                    onChange={(e)=>setBody(e.target.value)}
+                    disabled={isLocked}></textarea>
                 </div>                
-                <div className="card-footer mt-6">
+                <div className="card-footer mt-8">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
                             <div className="flex items-center space-x-2">
