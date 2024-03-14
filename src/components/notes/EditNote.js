@@ -63,6 +63,23 @@ const EditNote = () => {
         
     }
 
+    const handleExport = (e) => {
+
+        e.preventDefault()
+        const fileName = `${title || 'note'}.txt`;
+        const content = `${title}\n\n${body}`;
+        // const content = `Title: ${title}\nBody: ${body}\nColor: ${color}\nPinned: ${pinned}`;
+
+        const element = document.createElement('a');
+        const file = new Blob([content], { type: 'text/plain' });
+        element.href = URL.createObjectURL(file);
+        element.download = fileName;
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    };
+    
+
     const styles = reactCSS({
         'default': {
             color: {
@@ -137,6 +154,7 @@ const EditNote = () => {
                     <Spinner/>
                 </div> 
                 :
+                <>
                 <div className="grid grid-cols-1 sm:grid-cols-6 gap-0 sm:gap-4">
                     <input type="text" placeholder="Write Your Note's title..." className="input input-ghost mb-8 text-3xl sm:text-4xl p-4 col-start-1 col-span-2 sm:col-start-2 sm:col-span-4 focus:border-transparent focus:outline-none"
                     value={title}
@@ -145,7 +163,18 @@ const EditNote = () => {
                     <textarea className="textarea textarea-ghost text-xl sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-60 focus:border-transparent focus:outline-none" placeholder="Your thoughts..."
                     value={body}
                     onChange={(e)=>setBody(e.target.value)}></textarea>
-                </div>
+                </div>                
+                <div className="card-footer p-6">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                            <div className="flex items-center space-x-2">
+                                <button className="btn btn-outline rounded-md border-2 normal-case text-xs font-normal text-black" onClick={handleExport}>Export</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                </>
+
             }
         </form>
         </div>
