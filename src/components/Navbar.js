@@ -85,7 +85,7 @@ const Navbar = () => {
                 </nav>
 
                 {/* Mobile menu */}
-                <div className='lg:hidden ml-auto'>
+                <div className='sm:hidden ml-auto'>
                     <label className="swap swap-rotate">
                         {/* this hidden checkbox controls the state */}
                         <input

@@ -146,7 +146,7 @@ const AddNote = () => {
     })
 
     return ( 
-        <div className="-mx-4 lg:mx-8 md:mx-4 sm:mx-2 text-primary">
+        <div className="-mx-2 lg:mx-8 md:mx-4 sm:mx-2 text-primary">
         <form onSubmit={addNote}>
             <div className="lg:flex md:flex sm:flex items-center justify-between mb-12 mt-20">
                 <Link className="text-xl font-medium" to={"/dashboard"}> ← Back</Link>

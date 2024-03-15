@@ -166,7 +166,7 @@ const EditNote = () => {
     })
 
     return ( 
-        <div className="-mx-4 lg:mx-8 md:mx-4 sm:mx-2 text-primary">
+        <div className="-mx-2 lg:mx-8 md:mx-4 sm:mx-2 text-primary">
         <form onSubmit={updateNote}>
         
         <div className="lg:flex md:flex sm:flex items-center justify-between mb-12 mt-20">
