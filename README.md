@@ -26,9 +26,15 @@ Here's what you can do with Noteed:
 
 - **Cross-Platform Syncing**: Users can sync their notes across multiple devices, ensuring they always have access to their information.
 
-- **Export**: Users can export their notes as TXT files.
+- **Dark Mode**: Users can switch to a dark mode theme for a more comfortable reading experience in low-light environments.
 
-- **Note lock**: Users can lock their notes to prevent editing
+- **(New) Note lock**: Users can lock their notes to prevent editing.
+
+- **(New) Export**: Users can export their notes as text files.
+
+- **(New) Print**: Users can print their notes directly from the application, allowing them to have physical copies for reference or offline use.
+
+- **(New) Share**: Users can share their notes with others by generating a unique link. This allows for collaboration and easy sharing of information.
 
 ## Run Locally
 

@@ -46,7 +46,7 @@ function SharedNote() {
 
 return (
     <div className='bg-[#FAFAFA]'>
-        <div className="flex justify-center items-center h-screen mx-auto max-w-2xl">
+        <div className="flex justify-center items-center h-screen mx-auto max-w-2xl px-8 sm:px-0">
             <div className="relative group overflow-hidden p-8 rounded-xl bg-white drop-shadow-xl">
                 <div className='flex items-center justify-center text-3xl font-semibold'>
                     <Logo />
