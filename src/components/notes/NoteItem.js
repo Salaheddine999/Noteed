@@ -53,7 +53,7 @@ const NoteItem = ({note}) => {
         const url = window.location.origin + path;
       
         try {
-          const response = await axios.get(`http://tinyurl.com/api-create.php?url=${url}`);
+          const response = await axios.get(`https://tinyurl.com/api-create.php?url=${url}`);
           const shortUrl = response.data;
           navigator.clipboard.writeText(shortUrl);
           toast.success('Share link copied to clipboard!');
