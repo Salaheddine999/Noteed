@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LogoutButton from "../auth/LogoutButton"
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/icon_1.png';
+import Logo from './logo/Logo';
 
 const Navbar = () => {
 
@@ -40,12 +40,7 @@ const Navbar = () => {
                     <span className="sr-only">Noteed</span>
                 </a> */}
                 <a className="flex items-center justify-center text-3xl font-semibold">
-                        <img
-                        alt="Image"
-                        className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center w-14 h-14"
-                        src={logo}
-                        /><span className='ml-1 hidden sm:block'>Noteed</span>
-                        <span className="sr-only">Noteed</span>
+                    <Logo />
                 </a>
                 <nav className="ml-auto gap-4 sm:gap-6 hidden sm:flex">
                     {isAuthenticated ? 

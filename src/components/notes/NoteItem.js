@@ -1,12 +1,14 @@
 import Modal from "../Modal";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useDeleteNote} from "../../hooks/useNote"
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 import { useAuth0 } from "@auth0/auth0-react";
 import { usePinnedNotes } from "../../hooks/useNote";
 import { TbTrash } from "react-icons/tb";
+import { IoIosShareAlt } from "react-icons/io";
+
 
 const NoteItem = ({note}) => {
 
@@ -15,7 +17,7 @@ const NoteItem = ({note}) => {
     const {id, title, body, color, pinned} = note
 
     const { user } = useAuth0();
-    const{email} = user
+    const{email, name} = user
 
     const {mutate:noteMutation} = useDeleteNote()
     
@@ -41,6 +43,25 @@ const NoteItem = ({note}) => {
         }  
     }
 
+    const shareNote = async () => {
+        const encodedTitle = encodeURIComponent(title);
+        const encodedBody = encodeURIComponent(body);
+        const encodedColor = encodeURIComponent(color);
+        const encodedUser= encodeURIComponent(name);
+
+        const path = `/shared-note?title=${encodedTitle}&body=${encodedBody}&color=${encodedColor}&user=${encodedUser}`;
+        const url = window.location.origin + path;
+      
+        try {
+          const response = await axios.get(`http://tinyurl.com/api-create.php?url=${url}`);
+          const shortUrl = response.data;
+          navigator.clipboard.writeText(shortUrl);
+          toast.success('Share link copied to clipboard!');
+        } catch (error) {
+          toast.error('Failed to shorten URL');
+        }
+      };
+
     // const handelChange = () =>{
     //     notePinnMutation.mutate({title:title, body:body, user_id: email, color:color, pinned:!pinned})
     // }
@@ -61,7 +82,13 @@ const NoteItem = ({note}) => {
                                         :
                                         <TbPinnedOff/>) 
                                 }  */}
-                                <label htmlFor={`my-modal-${note.id}`} className="rounded-md md:opacity-0 lg:opacity-0 sm:opacity-100 group-hover:opacity-100 transition-opacity cursor-pointer text-black"><TbTrash  className="w-[18px] h-[18px]"/></label>
+                                <label htmlFor={`my-modal-${note.id}`} className="rounded-md md:opacity-0 lg:opacity-0 sm:opacity-100 group-hover:opacity-100 transition-opacity cursor-pointer text-black">
+                                    <TbTrash  className="w-[18px] h-[18px]"/>
+                                </label>
+                                <label className="rounded-md md:opacity-0 lg:opacity-0 sm:opacity-100 group-hover:opacity-100 transition-opacity cursor-pointer text-black" onClick={shareNote}>
+                                    <IoIosShareAlt className="w-[18px] h-[18px]"/>
+                                </label>
+                               
                             </div>
                         </div>
                     </div>

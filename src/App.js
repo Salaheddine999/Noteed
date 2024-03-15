@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import EditNote from './components/notes/EditNote';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import TermsOfUse from './pages/TermsOfUse';
+import SharedNote from './pages/SharedNote';
 
 const queryClient = new QueryClient()
 
@@ -41,17 +42,18 @@ function AppContent() {
   const isHomeRoute = location.pathname === '/'
 
   return (
-    <div className={isHomeRoute ? 'absolute top-0 z-[-2] h-full w-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(246,187,218,0.35),rgba(255,255,255,0))]' : ''}>
-      <div className='max-w-7xl sm:mx-auto justify-arround mt-3 mx-6 '>
+<div className={isHomeRoute ? 'absolute top-0 z-[-2] h-full w-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(246,187,218,0.35),rgba(255,255,255,0))]' : ''}>
+      <div className={location.pathname === "/shared-note" ? 'w-full' : 'max-w-7xl sm:mx-auto justify-arround mt-3 mx-6'}>
         <Auth0ProviderWithNavigate>
-          <Navbar/>
-          <main className='px-3 pb-12'>
+          {location.pathname !== "/shared-note" && <Navbar/>}
+          <main>
             <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/dashboard' element={<ProtectedRoute component={Dashboard}/>}/>
               <Route path='/terms-of-use' element={<TermsOfUse/>}/>
               <Route path='/add-note' element={<AddNote/>}/>
               <Route path='/edit-note/:id' element={<EditNote/>}/>
+              <Route path="/shared-note" element={<SharedNote/>} />
             </Routes>
           </main>
         </Auth0ProviderWithNavigate>

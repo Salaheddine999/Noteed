@@ -52,6 +52,20 @@ code {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+.text-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.read-more {
+  /* display: none; */
+}
+
+.overflowed + .read-more {
+  display: inline;
+}
 
 @font-face {
   font-family: 'InterTight';
