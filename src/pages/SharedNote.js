@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../components/logo/Logo';
+import parse from 'html-react-parser';
 
 function SharedNote() {
 
@@ -44,6 +45,10 @@ function SharedNote() {
         setLineCount(lines);
     }, [body]);
 
+    function htmlToReact(html) {
+        return parse(html);
+    }
+
 return (
     <div className='bg-[#FAFAFA]'>
         <div className="flex justify-center items-center h-screen mx-auto max-w-2xl px-8 sm:px-0">
@@ -56,13 +61,13 @@ return (
                 <div className="relative rounded-xl p-6 mb-2">    
                 <div className="mt-12 pb-6 rounded-b-[--card-border-radius]">
                     <h1 className="text-xl font-semibold mb-4">{decodeURIComponent(title)}</h1>
-                    <p className={`text-lg leading-[1.4] ${isExpanded ? '' : 'text-clamp-3'}`}>{decodeURIComponent(body)}</p>
+                    <p className={`text-lg leading-[1.4] ${isExpanded ? '' : 'text-clamp-3'}`}>{htmlToReact(decodeURIComponent(body))}</p>
                     {isExpanded ? 
                         <button className="show-less text-xs text-gray-500" onClick={toggleExpanded}>Show Less</button> :
                         (lineCount > 3 ? <button className="read-more text-xs text-gray-500 " onClick={toggleExpanded}>Show More</button> : null)
                     }
                 </div>
-                    <p className='text-right text-sm text-gray-700'>By {decodeURIComponent(user)}</p>
+                    <p className='text-right text-sm text-gray-700'>By {htmlToReact(decodeURIComponent(user))}</p>
                 </div>
                 <div className="flex justify-center">
                     <p className="text-sm text-gray-400">This note is shared using <Link className="hover:underline" to="/">Noteed</Link></p>
