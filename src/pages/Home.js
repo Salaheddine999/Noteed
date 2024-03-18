@@ -15,6 +15,7 @@ import {
     RiShareForwardFill,
 } from 'react-icons/ri';
 import { TbFileExport } from 'react-icons/tb';
+import { MdSync } from 'react-icons/md';
 
 const Home = () => {
     const { isAuthenticated } = useAuth0();
@@ -174,8 +175,8 @@ const Home = () => {
                                             {/* Feature 1 */}
                                             <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
                                                 {/* Icon */}
-                                                <div className="p-2 bg-opacity-50 rounded-full">
-                                                    <RiFlashlightFill className="text-black h-6 w-6 mb-1" />
+                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
+                                                    <RiFlashlightFill className="text-gray-100 h-5 w-5" />
                                                 </div>
                                                 {/* Title */}
                                                 <h2 className="text-xl font-medium text-black">
@@ -192,8 +193,8 @@ const Home = () => {
                                             {/* Feature 2 */}
                                             <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
                                                 {/* Icon */}
-                                                <div className="p-2 bg-opacity-50 rounded-full">
-                                                    <RiMoonFill className="text-black h-6 w-6 mb-1" />
+                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
+                                                    <RiMoonFill className="text-gray-100 h-5 w-5" />
                                                 </div>
                                                 {/* Title */}
                                                 <h2 className="text-xl font-medium text-black">
@@ -210,8 +211,8 @@ const Home = () => {
                                             {/* Feature 3 */}
                                             <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
                                                 {/* Icon */}
-                                                <div className="p-2 bg-opacity-50 rounded-full">
-                                                    <RiListUnordered className="text-black h-6 w-6 mb-1" />
+                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
+                                                    <RiListUnordered className="text-gray-100 h-5 w-5" />
                                                 </div>
                                                 {/* Title */}
                                                 <h2 className="text-xl font-medium text-black">
@@ -227,41 +228,40 @@ const Home = () => {
                                             </div>
                                             <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
                                                 {/* Icon */}
-                                                <div className="p-2 bg-opacity-50 rounded-full">
-                                                    <TbFileExport className="text-black h-6 w-6 mb-1" />
+                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
+                                                    <TbFileExport className="text-gray-100 h-5 w-5" />
                                                 </div>
                                                 {/* Title */}
                                                 <h2 className="text-xl font-medium text-black">
-                                                    Export
+                                                    Print & Export
                                                 </h2>
                                                 {/* Description */}
                                                 <p className="text-black">
-                                                    Save your notes in various
-                                                    file formats like PDF or
-                                                    text for sharing or
-                                                    archiving.
+                                                    Save and print your notes in
+                                                    various formats for easy
+                                                    sharing and offline access.
                                                 </p>
                                             </div>
                                             <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
                                                 {/* Icon */}
-                                                <div className="p-2 bg-opacity-50 rounded-full">
-                                                    <RiPrinterFill className="text-black h-6 w-6 mb-1" />
+                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
+                                                    <MdSync className="text-gray-100 h-5 w-5" />
                                                 </div>
                                                 {/* Title */}
                                                 <h2 className="text-xl font-medium text-black">
-                                                    Print
+                                                    Multi-Device Sync
                                                 </h2>
                                                 {/* Description */}
                                                 <p className="text-black">
-                                                    Print your notes directly
-                                                    from the app for easy
-                                                    reference on paper.
+                                                    Keep notes consistent across
+                                                    all your devices, ensuring
+                                                    easy access and continuity.
                                                 </p>
                                             </div>
                                             <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
                                                 {/* Icon */}
-                                                <div className="p-2 bg-opacity-50 rounded-full">
-                                                    <RiShareForwardFill className="text-black h-6 w-6 mb-1" />
+                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
+                                                    <RiShareForwardFill className="text-gray-100 h-5 w-5" />
                                                 </div>
                                                 {/* Title */}
                                                 <h2 className="text-xl font-medium text-black">
