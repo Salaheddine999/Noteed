@@ -107,6 +107,7 @@ const EditNote = () => {
             setColor(data?.data.color);
             setPinned(data?.data.pinned);
             editor.commands.setContent(data?.data.body);
+            setEditorContent(data?.data.body);
             setIsfetching(false);
         });
     }, [editor]);
