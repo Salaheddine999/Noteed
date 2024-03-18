@@ -173,7 +173,7 @@ const Home = () => {
                                     <div className="w-full max-w-full space-y-4 mx-auto">
                                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                             {/* Feature 1 */}
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
+                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
                                                 {/* Icon */}
                                                 <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
                                                     <RiFlashlightFill className="text-gray-100 h-5 w-5" />
@@ -191,7 +191,7 @@ const Home = () => {
                                                 </p>
                                             </div>
                                             {/* Feature 2 */}
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
+                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
                                                 {/* Icon */}
                                                 <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
                                                     <RiMoonFill className="text-gray-100 h-5 w-5" />
@@ -209,7 +209,7 @@ const Home = () => {
                                                 </p>
                                             </div>
                                             {/* Feature 3 */}
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
+                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
                                                 {/* Icon */}
                                                 <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
                                                     <RiListUnordered className="text-gray-100 h-5 w-5" />
@@ -226,7 +226,7 @@ const Home = () => {
                                                     organization.
                                                 </p>
                                             </div>
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
+                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
                                                 {/* Icon */}
                                                 <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
                                                     <TbFileExport className="text-gray-100 h-5 w-5" />
@@ -242,7 +242,7 @@ const Home = () => {
                                                     sharing and offline access.
                                                 </p>
                                             </div>
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
+                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
                                                 {/* Icon */}
                                                 <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
                                                     <MdSync className="text-gray-100 h-5 w-5" />
@@ -258,7 +258,7 @@ const Home = () => {
                                                     easy access and continuity.
                                                 </p>
                                             </div>
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50">
+                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
                                                 {/* Icon */}
                                                 <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
                                                     <RiShareForwardFill className="text-gray-100 h-5 w-5" />
@@ -281,62 +281,6 @@ const Home = () => {
                             </div>
                         </div>
                     </section>
-
-                    {/* <section className="w-full py-12 md:py-20 lg:py-18">
-                        <div className="container space-y-12 px-4 md:px-6">
-                            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                                <div className="space-y-2">
-                                    <h2 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-tight">
-                                        Happy Note Takers
-                                    </h2>
-                                </div>
-                            </div>
-                            <div className="mx-auto grid max-w-sm items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-8 lg:max-w-5xl lg:grid-cols-3">
-                                <div className="grid gap-1 p-6 bg-gray-100 rounded-md text-center">
-                                    <p className="font-normal text-[16px] leading-[1.4] text-black">
-                                        “Noteed keeps me super organized and
-                                        focused. The customizable backgrounds
-                                        are a great bonus!“
-                                    </p>
-                                    <div className="flex items-center gap-1 justify-center mt-3">
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                    </div>
-                                </div>
-                                <div className="grid gap-1 p-6 bg-gray-100 rounded-md text-center">
-                                    <p className="font-normal text-[16px] leading-[1.4] text-black">
-                                        “Noteed has changed the game for me as a
-                                        student. It's so easy to use, and the
-                                        design is great.“
-                                    </p>
-                                    <div className="flex items-center gap-1 justify-center mt-3">
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                    </div>
-                                </div>
-                                <div className="grid gap-1 p-6 bg-gray-100 rounded-md text-center">
-                                    <p className="font-normal text-[16px] leading-[1.4] text-black">
-                                        “For all my note-taking needs, I rely on
-                                        Noteed. Its simplicity and effectiveness
-                                        make it my top choice.“
-                                    </p>
-                                    <div className="flex items-center gap-1 justify-center mt-3">
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                        <StarIcon className="w-4 h-4 fill-black" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section> */}
 
                     <section
                         className="w-full py-12 md:py-24 lg:py-26"
@@ -401,7 +345,7 @@ const Home = () => {
                                 <h2 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-tight">
                                     Get Organized, Get Noted!
                                 </h2>
-                                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                     Start your note-taking journey with Noteed
                                     and streamline your productivity today!
                                 </p>
