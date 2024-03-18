@@ -73,7 +73,7 @@ const Home = () => {
                                             </div>
 
                                             <a className="text-sm text-neutral">
-                                                You don't have an account?
+                                                Would you like to try the app?
                                             </a>
                                             <span className="text-sm text-neutral">
                                                 {' '}
@@ -164,7 +164,7 @@ const Home = () => {
                                         <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-tight">
                                             Discover Our Unique Features
                                         </h1>
-                                        <p className="max-w-[600px] md:text-xl mx-auto text-center text-gray-500">
+                                        <p className="max-w-[600px] text-gray-500 text-md mx-auto sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
                                             Our features are designed to enhance
                                             your productivity and streamline
                                             your workflow.
