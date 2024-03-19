@@ -97,7 +97,7 @@ const NoteItem = ({ note }) => {
                     <Link to={`/edit-note/${id}`}>
                         <p
                             ref={bodyRef}
-                            className="font-normal text-base leading-[1.4] text-black"
+                            className="font-normal text-black subpixel-antialiased leading-[1.4] text-black"
                         >
                             {htmlToReact(body)}
                         </p>

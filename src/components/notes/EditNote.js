@@ -184,15 +184,19 @@ const EditNote = () => {
         }
     };
 
+    function removeHtmlTags(html) {
+        var temp = document.createElement('DIV');
+        temp.innerHTML = html;
+        return temp.textContent || temp.innerText || '';
+    }
+
     const handleExport = (e) => {
         e.preventDefault();
         if (title === '' && body === '') {
             toast.error('Missing content!');
         } else {
             const fileName = `${title || 'note'}.txt`;
-            const content = `${title}\n\n${body}`;
-            // const content = `Title: ${title}\nBody: ${body}\nColor: ${color}\nPinned: ${pinned}`;
-
+            const content = `${title}\n\n${removeHtmlTags(body)}`;
             const element = document.createElement('a');
             const file = new Blob([content], { type: 'text/plain' });
             element.href = URL.createObjectURL(file);

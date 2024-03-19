@@ -87,6 +87,7 @@ const Home = () => {
                                                     </span>
                                                     demo@email.com
                                                 </div>
+
                                                 <div className="underline text-neutral">
                                                     <span className="badge bg-transparent border-none text-neutral">
                                                         Password:

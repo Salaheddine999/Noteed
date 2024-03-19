@@ -27,8 +27,8 @@ html {
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    /* -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; */
 }
 
 code {
@@ -133,7 +133,8 @@ code {
 
 .bubble-menu {
     display: flex;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 6px;
     width: fit-content;
 
@@ -141,10 +142,10 @@ code {
         border: none;
         background: none;
         color: #000;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         font-weight: 500;
         opacity: 0.6;
-        padding: 0 0.5rem;
+        padding: 0 0.6rem;
 
         &:hover,
         &.is-active {
