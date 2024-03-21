@@ -50,25 +50,12 @@ const Dashboard = () => {
     return (
         isAuthenticated && (
             <div className="lg:mx-8 md:mx-4 sm:mx-2 text-primary mb-8 sm:mb-0">
-                <div className="grid grid-cols-2 mb-10 mt-20">
-                    <h2 className="text-4xl font-normal lg:text-5xl md:text-5xl sm:text-5xl">
-                        Your notes
-                    </h2>
-                </div>
-                <div className="grid grid-cols-2 my-8 lg:mb-0 md:mb-0 sm:mb-0">
-                    <h5 className="font-semibold text-xl lg:hidden md:hidden sm:hidden">
-                        Notes list
-                    </h5>
-                </div>
-
-                <div className="navbar mb-14">
-                    <div className="flex-1">
-                        <p className="font-semibold hidden lg:inline md:inline sm:inline lg:text-lg md:text-lg sm:text-lg">
-                            Notes list
+                <div className="flex justify-between flex-wrap mt-24 sm:mt-28 mb-6">
+                    <h2 className="text-5xl font-normal">Your notes</h2>
+                    <div className="flex items-center mt-8 sm:mt-0 flex-row-reverse sm:flex-row">
+                        <p className="text-sm font-normal mr-2 hidden sm:inline">
+                            Sort by
                         </p>
-                    </div>
-                    <div className="flex-none">
-                        <p className="text-sm font-normal mr-2">Sort by</p>
                         <div className="dropdown dropdown-end mr-3">
                             <label
                                 tabIndex={0}
@@ -132,6 +119,11 @@ const Dashboard = () => {
                             New
                         </Link>
                     </div>
+                </div>
+                <div className="grid grid-cols-2 lg:mb-0 md:mb-0 sm:mb-0">
+                    <h5 className="font-medium text-lg mt-6 mb-8">
+                        Notes list
+                    </h5>
                 </div>
 
                 {isFetching ? (
