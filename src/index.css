@@ -134,22 +134,26 @@ code {
 .bubble-menu {
     display: flex;
     background-color: #ffffff;
-    border: 1px solid #e2e8f0;
     border-radius: 6px;
     width: fit-content;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 
     button {
         border: none;
         background: none;
-        color: #000;
+        color: #0d0d0d;
         font-size: 0.9rem;
         font-weight: 500;
-        opacity: 0.6;
-        padding: 0 0.6rem;
+        opacity: 0.8;
+        padding: 0.1rem 0.5rem;
+        margin: 2px;
+        border-radius: 6px;
 
         &:hover,
         &.is-active {
             opacity: 1;
+            background-color: #333333;
+            color: #e2e8f0;
         }
     }
 }
