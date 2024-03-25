@@ -8,12 +8,7 @@ import reactCSS from 'reactcss';
 import { TbFileExport } from 'react-icons/tb';
 import { FiPrinter } from 'react-icons/fi';
 import { MdLockOutline, MdLockOpen } from 'react-icons/md';
-import {
-    BubbleMenu,
-    EditorContent,
-    FloatingMenu,
-    useEditor,
-} from '@tiptap/react';
+import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import { Color } from '@tiptap/extension-color';
@@ -241,6 +236,7 @@ const AddNote = () => {
                         </div>
                         <div className="divider divider-horizontal"></div>
                         <Link
+                            id="cancelButton"
                             className="btn btn-primary btn-outline mr-2 font-normal rounded-md border-2 md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case"
                             to={'/dashboard'}
                         >
@@ -278,6 +274,7 @@ const AddNote = () => {
                             </button>
                         ) : (
                             <button
+                                id="saveButton"
                                 type="submit"
                                 className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case"
                             >
@@ -539,6 +536,7 @@ const AddNote = () => {
                         <div className="flex items-center">
                             <div className="flex items-center space-x-2">
                                 <button
+                                    id="exportButton"
                                     className="btn btn-primary btn-outline rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case border-2"
                                     onClick={handleExport}
                                 >
@@ -546,6 +544,7 @@ const AddNote = () => {
                                     <TbFileExport className="w-5 h-5" />
                                 </button>
                                 <button
+                                    id="printButton"
                                     className="btn btn-primary btn-outline rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case border-2"
                                     onClick={handlePrint}
                                 >

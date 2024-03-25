@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState, useRef } from 'react';
@@ -10,12 +10,7 @@ import reactCSS from 'reactcss';
 import { TbFileExport } from 'react-icons/tb';
 import { FiPrinter } from 'react-icons/fi';
 import { MdLockOutline, MdLockOpen } from 'react-icons/md';
-import {
-    BubbleMenu,
-    EditorContent,
-    FloatingMenu,
-    useEditor,
-} from '@tiptap/react';
+import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import { Color } from '@tiptap/extension-color';
@@ -97,8 +92,6 @@ const EditNote = () => {
     const [pinned, setPinned] = useState();
     const [showColorPicker, setShowColorPicker] = useState(false);
     const { email } = user;
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`${api}/${id}`).then((data) => {
@@ -270,6 +263,7 @@ const EditNote = () => {
                         </div>
                         <div className="divider divider-horizontal"></div>
                         <Link
+                            id="cancelButton"
                             className="btn btn-primary btn-outline rounded-md font-normal mr-2 md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case border-2"
                             to={'/dashboard'}
                         >
@@ -307,6 +301,7 @@ const EditNote = () => {
                             </button>
                         ) : (
                             <button
+                                id="saveButton"
                                 type="submit"
                                 className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case"
                             >
@@ -583,6 +578,7 @@ const EditNote = () => {
                                 <div className="flex items-center">
                                     <div className="flex items-center space-x-2">
                                         <button
+                                            id="exportButton"
                                             className="btn btn-primary btn-outline rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case border-2"
                                             onClick={handleExport}
                                         >
@@ -590,6 +586,7 @@ const EditNote = () => {
                                             <TbFileExport className="w-5 h-5" />
                                         </button>
                                         <button
+                                            id="printButton"
                                             className="btn btn-primary btn-outline rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case border-2"
                                             onClick={handlePrint}
                                         >

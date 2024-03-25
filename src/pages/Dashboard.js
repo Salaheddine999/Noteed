@@ -101,6 +101,7 @@ const Dashboard = () => {
                         <Link
                             className="btn btn-primary gap-2 rounded-md font-normal border bg-primary text-base-100 normal-case"
                             to={'/add-note'}
+                            id="newNoteButton"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
