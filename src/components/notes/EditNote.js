@@ -62,7 +62,7 @@ const EditNote = () => {
         ],
         editorProps: {
             attributes: {
-                class: '-mt-4 text-xl sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-52 overflow-y-auto focus:border-transparent focus:outline-none disabled:bg-transparent disabled:border-transparent',
+                class: '-mt-4 text-xl sm:text-2xl h-60 overflow-y-auto focus:border-transparent focus:outline-none disabled:bg-transparent disabled:border-transparent',
             },
         },
         content: '',
@@ -240,7 +240,7 @@ const EditNote = () => {
     return (
         <div className="-mx-2 lg:mx-8 md:mx-4 sm:mx-2 text-primary">
             <form onSubmit={updateNote}>
-                <div className="lg:flex md:flex sm:flex items-center justify-between mb-12 mt-20">
+                <div className="lg:flex md:flex sm:flex items-center justify-between mb-16 mt-20">
                     <Link className="text-xl font-medium" to={'/dashboard'}>
                         {' '}
                         ← Back
@@ -325,7 +325,7 @@ const EditNote = () => {
                     </div>
                 ) : (
                     <>
-                        <div className="grid grid-cols-1 sm:grid-cols-6 gap-0 sm:gap-4">
+                        <div className="flex flex-col sm:mx-20">
                             <input
                                 type="text"
                                 placeholder="Write Your Note's title..."
@@ -573,7 +573,7 @@ const EditNote = () => {
                                 <EditorContent editor={editor} />
                             </div>
                         </div>
-                        <div className="card-footer mt-8">
+                        <div className="card-footer mt-12">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center">
                                     <div className="flex items-center space-x-2">

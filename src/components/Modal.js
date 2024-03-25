@@ -21,7 +21,7 @@ const Modal = ({ deleteNote, id }) => {
                     <div className="modal-action">
                         <label
                             htmlFor={`my-modal-${id}`}
-                            className="btn btn-warning rounded-md font-normal normal-case border-2"
+                            className="btn btn-warning rounded-md font-normal normal-case border-2 hover:bg-red-500 hover:border-red-500"
                             onClick={deleteNote}
                         >
                             Delete

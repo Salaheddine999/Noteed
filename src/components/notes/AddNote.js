@@ -60,7 +60,7 @@ const AddNote = () => {
         ],
         editorProps: {
             attributes: {
-                class: '-mt-4 text-xl sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-52 overflow-y-auto focus:border-transparent focus:outline-none disabled:bg-transparent disabled:border-transparent',
+                class: '-mt-4 text-xl sm:text-2xl h-60 overflow-y-auto focus:border-transparent focus:outline-none disabled:bg-transparent disabled:border-transparent',
             },
         },
         content: '',
@@ -292,7 +292,7 @@ const AddNote = () => {
                         </label>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-6 gap-0 sm:gap-4">
+                <div className="flex flex-col sm:mx-20">
                     <input
                         type="text"
                         placeholder="Write your note's title..."
@@ -531,7 +531,7 @@ const AddNote = () => {
                         <EditorContent editor={editor} />
                     </div>
                 </div>
-                <div className="card-footer mt-8">
+                <div className="card-footer mt-12">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
                             <div className="flex items-center space-x-2">
