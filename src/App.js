@@ -117,12 +117,12 @@ function AppContent() {
             {location.pathname !== '/' && (
                 <>
                     <button
-                        className="hidden sm:inline fixed p-3 right-4 bottom-4 z-50 bg-gray-200 rounded-lg border-none hover:bg-gray-300 text-black"
+                        className="hidden sm:inline fixed p-2 right-6 bottom-6 z-50 bg-gray-200 rounded-lg border-none hover:bg-gray-300 text-black"
                         onClick={() =>
                             document.getElementById('my_modal_1').showModal()
                         }
                     >
-                        <BsQuestionCircle className="w-6 h-6" />
+                        <BsQuestionCircle className="w-5 h-5" />
                     </button>
                     <ShortcutsModal />
                 </>

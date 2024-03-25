@@ -11,7 +11,7 @@ export default function ShortcutsModal() {
                         <IoMdClose className="w-6 h-6" />
                     </button>
                 </form>
-                <h3 className="font-medium text-lg mb-4 font-normal">
+                <h3 className="font-medium text-xl mb-4 font-normal">
                     Welcome to Noteed! Get started with these simple
                     instructions:
                 </h3>
@@ -47,7 +47,7 @@ export default function ShortcutsModal() {
                     <span className="font-medium">Share Note: </span> Click the
                     share icon to generate a link to share your note.
                 </p>
-                <h3 className="font-medium text-md my-4 font-normal">
+                <h3 className="font-medium text-md my-6 font-normal">
                     Keyboard shortcuts:
                 </h3>
                 <div className="py-2 flex items-center justify-between">
