@@ -98,7 +98,7 @@ export default function ShortcutsModal() {
                         </span>{' '}
                         +&nbsp;
                         <span className="kbd kbd-md rounded-md border-none">
-                            p
+                            P
                         </span>
                     </p>
                 </div>
