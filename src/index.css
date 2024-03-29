@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+}
 
 html,
 body,
@@ -218,7 +226,7 @@ ul[data-type='taskList'] > li {
     height: 200px; /* Adjust the height of the fade as needed */
     background: linear-gradient(
         transparent,
-        rgba(255, 255, 255, 1)
+        rgba(248, 248, 255, 1)
     ); /* Adjust the colors and transparency as needed */
     pointer-events: none; /* Prevent the gradient from blocking mouse events */
 }

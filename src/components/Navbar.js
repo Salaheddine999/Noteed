@@ -32,7 +32,7 @@ const Navbar = () => {
     return (
         <>
             <div>
-                <header className="lg:px-6 h-14 flex items-center text-primary">
+                <header className="px-6  h-20 flex items-center text-primary">
                     {/* <a className="flex items-center justify-center text-3xl font-semibold">
                     ✏️Noteed
                     <span className="sr-only">Noteed</span>
@@ -43,12 +43,12 @@ const Navbar = () => {
                     <nav className="ml-auto gap-4 sm:gap-6 hidden sm:flex">
                         {isAuthenticated ? (
                             <>
-                                <Link
+                                {/* <Link
                                     className="text-sm font-medium hover:underline underline-offset-4"
                                     to="/"
                                 >
                                     Home
-                                </Link>
+                                </Link> */}
                                 <a
                                     className="text-sm font-medium hover:underline underline-offset-4"
                                     href="#"
