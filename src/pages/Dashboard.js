@@ -6,6 +6,8 @@ import { useNotesData, usePinnedNotes } from '../hooks/useNote';
 import { useState } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
 import { FaChevronLeft } from 'react-icons/fa';
+import { BsQuestionCircle } from 'react-icons/bs';
+import ShortcutsModal from '../components/ShortcutsModal';
 
 const Dashboard = () => {
     const [sortOrder, setSortOrder] = useState('desc');

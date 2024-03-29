@@ -1,61 +1,98 @@
 import SignupButton from '../auth/SignupButton';
-import LoginButton from '../auth/LoginButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
-import preview1 from '../assets/472shots_so.png';
-import preview2 from '../assets/203shots_so.png';
-import GetStarted from '../auth/GetStarted';
+import preview1 from '../assets/380shots_so.png';
+import preview2 from '../assets/605shots_so.png';
+import preview0 from '../assets/Devices.png';
+import zwa9a from '../assets/zwa9a.svg';
+import lightning from '../assets/Lightning.png';
+import cloud from '../assets/Cloud.png';
+import moon from '../assets/Moon.png';
 import { RiArrowRightLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import {
-    RiFlashlightFill,
-    RiMoonFill,
-    RiListUnordered,
-    RiPrinterFill,
-    RiShareForwardFill,
-} from 'react-icons/ri';
-import { TbFileExport } from 'react-icons/tb';
-import { MdSync } from 'react-icons/md';
-
+import { RoughNotation } from 'react-rough-notation';
+import GetStarted from '../auth/GetStarted';
+import { useState, useEffect } from 'react';
+import { FaArrowUp } from 'react-icons/fa';
 const Home = () => {
     const { isAuthenticated } = useAuth0();
     const navigate = useNavigate();
 
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const toggleVisibility = () => {
+            if (window.pageYOffset > 300) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
+
+        window.addEventListener('scroll', toggleVisibility);
+
+        return () => {
+            window.removeEventListener('scroll', toggleVisibility);
+        };
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
     return (
         <div className="text-primary">
             <div className="flex flex-col min-h-[100dvh]">
                 <main className="flex-1">
-                    <section className="w-full mt-28 mb-24 ">
+                    <section className="w-full mt-28 mb-16">
                         <div className="container px-4 md:px-6">
                             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                                <div className="space-y-2">
-                                    <span className="relative inline-block overflow-hidden rounded-full p-[1px] mb-4">
-                                        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" />
-                                        <div className="inline-flex h-full w-full justify-center rounded-full bg-base-100 px-3 py-1 text-xs font-normal leading-5 text-secondary backdrop-blur-xl">
+                                <div>
+                                    <img
+                                        className="absolute ml-6 sm:ml-20 animate-bounce "
+                                        src={zwa9a}
+                                    />
+                                    <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
+                                        {/* <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" /> */}
+                                        <div className="inline-flex h-full w-full justify-center rounded-full bg-red-50 px-3 py-1 text-sm border border-red-300 font-normal leading-5 text-red-400 backdrop-blur-xl">
                                             New features⚡️
                                             <a
-                                                className="inline-flex items-center justify-center text-secondary font-medium"
+                                                className="inline-flex items-center justify-center text-red-400 font-normal"
                                                 href="https://github.com/Salaheddine999/Noteed"
                                                 target="_Blank"
                                             >
                                                 Read more{' '}
                                                 <RiArrowRightLine
-                                                    className="pl-0.5 text-secondary"
+                                                    className="pl-0.5 text-red-400"
                                                     size={15}
                                                 />
                                             </a>
                                         </div>
                                     </span>
-                                    <h1 className="text-5xl font-semibold sm:text-[58px] tracking-tight">
-                                        Your notes. Organized.
+                                    <h1 className="text-5xl font-medium sm:text-8xl tracking-tight mb-8">
+                                        Ideas captured <br />
+                                        Creativity&nbsp;
+                                        <RoughNotation
+                                            type="underline"
+                                            color="#111111"
+                                            show
+                                            animationDelay={1500}
+                                            padding={-3}
+                                            strokeWidth={4}
+                                        >
+                                            unleashed.
+                                        </RoughNotation>{' '}
                                     </h1>
-                                    <p className="max-w-[600px] text-gray-500 text-md sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
-                                        The beautiful note-taking app for
-                                        capturing your thoughts. Take notes,
-                                        make lists, and stay organized.
+                                    <p className="text-center max-w-lg mx-auto tracking-wide mb-6 text-md sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
+                                        With Noteed, gather, organize, and
+                                        prioritize your notes effortlessly.
+                                        Streamline your thoughts and stay
+                                        organized with ease.
                                     </p>
                                 </div>
-                                <div className="mx-auto max-w-sm space-y-2">
+                                <div className="mx-auto max-w-sm">
                                     {isAuthenticated ? (
                                         <button
                                             onClick={() => {
@@ -68,19 +105,18 @@ const Home = () => {
                                     ) : (
                                         <div>
                                             <div className="flex gap-2 justify-center">
-                                                <LoginButton />
+                                                {/* <LoginButton /> */}
                                                 <SignupButton />
                                             </div>
-
-                                            <a className="text-sm text-neutral">
+                                            <a className="text-sm text-neutral tracking-wide">
                                                 Would you like to try the app?
                                             </a>
-                                            <span className="text-sm text-neutral">
+                                            <span className="text-sm text-neutral tracking-wide">
                                                 {' '}
                                                 use demo account
                                             </span>
                                             <br />
-                                            <h5 className="flex justify-center gap-2 text-sm text-gray-500 dark:text-[#ffffff]">
+                                            <h5 className="flex justify-center gap-2 text-sm text-gray-500 dark:text-[#ffffff] tracking-wide">
                                                 <div className="underline text-neutral">
                                                     <span className="badge bg-transparent border-none text-neutral">
                                                         Email:
@@ -95,187 +131,238 @@ const Home = () => {
                                                     Demo1234
                                                 </div>
                                             </h5>
+                                            <div className="flex items-center mt-8">
+                                                <div className="avatar-group -space-x-6 rtl:space-x-reverse flex gap-2 justify-center">
+                                                    <div className="avatar">
+                                                        <div className="w-10">
+                                                            <img src="https://randomuser.me/api/portraits/women/2.jpg" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="avatar">
+                                                        <div className="w-10">
+                                                            <img src="https://randomuser.me/api/portraits/women/24.jpg" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="avatar">
+                                                        <div className="w-10">
+                                                            <img src="https://randomuser.me/api/portraits/men/2.jpg" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="avatar">
+                                                        <div className="w-10">
+                                                            <img src="https://randomuser.me/api/portraits/men/22.jpg" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="ml-2">
+                                                    <div className="text-md flex">
+                                                        {[...Array(5)].map(
+                                                            (_, index) => (
+                                                                <span
+                                                                    key={index}
+                                                                    className="text-yellow-400 text-md"
+                                                                    style={{
+                                                                        marginRight:
+                                                                            '0.1rem',
+                                                                    }} // Adjust margin between stars if needed
+                                                                >
+                                                                    &#9733;
+                                                                </span>
+                                                            ),
+                                                        )}
+                                                    </div>
+                                                    <p className="text-sm">
+                                                        Loved by 100+ users
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     )}
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <section
-                        className="w-full py-12 md:py-24 lg:py-24 border-t"
-                        id="features"
-                    >
-                        <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
+                        <div>
                             <img
-                                alt="Image"
-                                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                                height="310"
-                                src={preview1}
-                                width="550"
+                                src={preview0}
+                                className="mx-auto mt-20 aspect-video h-auto w-[95%] rounded-xl overflow-hidden object-cover object-center"
                             />
-
-                            <div className="space-y-4 text-primary">
-                                <h2 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-tight">
-                                    Introducing Noteed
-                                </h2>
-                                <ul className="grid gap-4">
-                                    <li>
-                                        <div className="grid gap-1">
-                                            <h3 className="text-xl font-medium">
-                                                Notes📝
-                                            </h3>
-                                            <p className="text-gray-500">
-                                                Capture your thoughts with our
-                                                beautiful note editor.
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="grid gap-1">
-                                            <h3 className="text-xl font-medium">
-                                                Access Anywhere📱
-                                            </h3>
-                                            <p className="text-gray-500">
-                                                Access your notes from any
-                                                device, wherever you go.
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="grid gap-1">
-                                            <h3 className="text-xl font-medium">
-                                                Personalize🎨
-                                            </h3>
-                                            <p className="text-gray-500">
-                                                Personalize your notes with a
-                                                variety of background colors,
-                                                making them uniquely yours.
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </section>
-                    <section className="w-full py-8 md:py-16 lg:py-20 xl:py-32">
+
+                    <section
+                        className="w-full py-8 md:py-16 lg:py-20 xl:py-32"
+                        id="features"
+                    >
                         <div className="container px-4 md:px-6">
                             <div className="grid gap-6 items-center">
                                 <div className="flex flex-col justify-center space-y-4 text-center">
-                                    <div className="space-y-2">
-                                        <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-tight">
-                                            Discover Our Unique Features
+                                    <div className="space-y-2 mb-8">
+                                        <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
+                                            {/* <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" /> */}
+                                            <div className="inline-flex h-full w-full justify-center rounded-full bg-red-50 border border-red-300 px-3 py-1 text-sm font-normal leading-5 text-red-400 backdrop-blur-xl">
+                                                Noteed Features
+                                            </div>
+                                        </span>
+                                        <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal">
+                                            See All Features
                                         </h1>
-                                        <p className="max-w-[600px] text-gray-500 text-md mx-auto sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
-                                            Our features are designed to enhance
-                                            your productivity and streamline
-                                            your workflow.
+                                        <p className="text-center max-w-lg mx-auto tracking-wide mb-6 text-md sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
+                                            Embark on a journey of discovery
+                                            through a comprehensive array of
+                                            features, meticulously crafted to
+                                            elevate your note-taking experience
+                                            to new heights, only with Noteed!
                                         </p>
                                     </div>
-                                    <div className="w-full max-w-full space-y-4 mx-auto">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                            {/* Feature 1 */}
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
-                                                {/* Icon */}
-                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
-                                                    <RiFlashlightFill className="text-gray-100 h-5 w-5" />
+                                    <div className="w-full max-w-full mx-auto">
+                                        <div className="hidden sm:inline">
+                                            <div className="relative flex overflow-x-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+                                                <div className="py-8 animate-marquee whitespace-nowrap">
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🎨 Custom colors
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🌗 Dark/Light theme
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🛡️ Notes privacy
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ⚡️ Super fast
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🎨 Custom colors
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🌗 Dark/Light theme
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🛡️ Notes privacy
+                                                    </span>
                                                 </div>
-                                                {/* Title */}
-                                                <h2 className="text-xl font-medium text-black">
+                                                <div className="py-8 absolute top-0 py-12 animate-marquee2 whitespace-nowrap">
+                                                    <span className="mx-2 text-md px-4 bg-gray-100 rounded-lg py-4 text-gray-800">
+                                                        🎨 Custom colors
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🌗 Dark/Light theme
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🛡️ Notes privacy
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg  py-4 text-gray-800">
+                                                        ⚡️ Super fast
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🎨 Custom colors
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🌗 Dark/Light theme
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🛡️ Notes privacy
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="hidden sm:inline">
+                                            <div className="-mt-6 mb-8 relative flex overflow-x-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+                                                <div className="py-8 animate-marquee3 whitespace-nowrap">
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ↪️ Share notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ⬇️ Export notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🔒 Lock editor
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        📄 Print notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ↪️ Share notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ⬇️ Export notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🔒 Lock editor
+                                                    </span>
+                                                </div>
+                                                <div className="py-8 absolute top-0 py-12 animate-marquee4 whitespace-nowrap">
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ↪️ Share notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ⬇️ Export notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🔒 Lock editor
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        📄 Print notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ↪️ Share notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        ⬇️ Export notes
+                                                    </span>
+                                                    <span className="mx-2 text-md px-4 bg-[#f5f6fa] rounded-lg py-4 text-gray-800">
+                                                        🔒 Lock editor
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 text-gray-800">
+                                            <div className="flex flex-col bg-[#f5f6fa] text-left rounded-3xl overflow-hidden p-10">
+                                                <h3 className="text-xl font-medium mb-2 ">
                                                     Super Fast
-                                                </h2>
-                                                {/* Description */}
-                                                <p className="text-black">
-                                                    Enjoy lightning-fast
-                                                    note-taking and editing with
-                                                    Noteed's efficient
-                                                    performance.
+                                                </h3>
+                                                <p className="pb-16">
+                                                    Noteed ensures your thoughts
+                                                    are captured without delay,
+                                                    keeping up with your pace
+                                                    for efficient note-taking.
                                                 </p>
+                                                <img
+                                                    src={lightning}
+                                                    className="mx-auto w-[80%]"
+                                                />
                                             </div>
-                                            {/* Feature 2 */}
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
-                                                {/* Icon */}
-                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
-                                                    <RiMoonFill className="text-gray-100 h-5 w-5" />
-                                                </div>
-                                                {/* Title */}
-                                                <h2 className="text-xl font-medium text-black">
-                                                    Night Mode
-                                                </h2>
-                                                {/* Description */}
-                                                <p className="text-black">
-                                                    Switch to a darker color
-                                                    scheme for comfortable
-                                                    note-taking in low-light
-                                                    environments.
-                                                </p>
-                                            </div>
-                                            {/* Feature 3 */}
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
-                                                {/* Icon */}
-                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
-                                                    <RiListUnordered className="text-gray-100 h-5 w-5" />
-                                                </div>
-                                                {/* Title */}
-                                                <h2 className="text-xl font-medium text-black">
-                                                    Text Editor
-                                                </h2>
-                                                {/* Description */}
-                                                <p className="text-black">
-                                                    Use Markdown syntax to
-                                                    format your notes quickly
-                                                    and easily for better
-                                                    organization.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
-                                                {/* Icon */}
-                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
-                                                    <TbFileExport className="text-gray-100 h-5 w-5" />
-                                                </div>
-                                                {/* Title */}
-                                                <h2 className="text-xl font-medium text-black">
-                                                    Print & Export
-                                                </h2>
-                                                {/* Description */}
-                                                <p className="text-black">
-                                                    Save and print your notes in
-                                                    various formats for easy
-                                                    sharing and offline access.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
-                                                {/* Icon */}
-                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
-                                                    <MdSync className="text-gray-100 h-5 w-5" />
-                                                </div>
-                                                {/* Title */}
-                                                <h2 className="text-xl font-medium text-black">
+                                            <div className="flex flex-col bg-[#f5f6fa] text-left rounded-3xl overflow-hidden p-10">
+                                                <h3 className="text-xl font-medium mb-2">
                                                     Multi-Device Sync
-                                                </h2>
-                                                {/* Description */}
-                                                <p className="text-black">
-                                                    Keep notes consistent across
-                                                    all your devices, ensuring
-                                                    easy access and continuity.
+                                                </h3>
+                                                <p className="pb-16">
+                                                    With Noteed, your notes sync
+                                                    seamlessly across all
+                                                    devices, ensuring access and
+                                                    updates from anywhere.
                                                 </p>
-                                            </div>
-                                            <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg bg-gray-50 opacity-95">
-                                                {/* Icon */}
-                                                <div className="p-2 rounded-full bg-gradient-to-r from-[#fd7761] to-[#faccd4] mb-1">
-                                                    <RiShareForwardFill className="text-gray-100 h-5 w-5" />
-                                                </div>
-                                                {/* Title */}
-                                                <h2 className="text-xl font-medium text-black">
-                                                    Share
-                                                </h2>
-                                                {/* Description */}
-                                                <p className="text-black">
-                                                    Share your notes with others
-                                                    by generating a unique link
-                                                    for easy access.
+                                                <img
+                                                    src={cloud}
+                                                    className="mx-auto w-[80%]"
+                                                />
+                                            </div>{' '}
+                                            <div className="flex flex-col bg-[#f5f6fa] text-left rounded-3xl overflow-hidden p-10">
+                                                <h3 className="text-xl font-medium mb-2">
+                                                    Dark Mode
+                                                </h3>
+                                                <p className="pb-16">
+                                                    Noteed's dark mode offers a
+                                                    comfortable reading and
+                                                    writing experience, reducing
+                                                    eye strain in low-light
+                                                    settings.
                                                 </p>
+                                                <img
+                                                    src={moon}
+                                                    className="mx-auto w-[80%]"
+                                                />
                                             </div>
-                                            {/* Repeat for other features */}
                                         </div>
                                     </div>
                                 </div>
@@ -283,56 +370,63 @@ const Home = () => {
                         </div>
                     </section>
 
-                    <section
-                        className="w-full py-12 md:py-24 lg:py-26"
-                        id="upcoming"
-                    >
-                        <div className="container px-4 md:px-6">
-                            <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-10">
-                                <div className="space-y-4">
-                                    <h2 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-tight">
-                                        What's Next
-                                    </h2>
-                                    <ul className="grid gap-4">
-                                        <li>
-                                            <div className="grid gap-1">
-                                                <h3 className="text-xl font-medium">
-                                                    Collaboration🤝🏻
-                                                </h3>
-                                                <p className="text-gray-500">
-                                                    Enable a sleek dark mode for
-                                                    late-night note-taking.
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="grid gap-1">
-                                                <h3 className="text-xl font-medium">
-                                                    Tagging and Categorization🏷️
-                                                </h3>
-                                                <p className="text-gray-500">
-                                                    Create custom tags, and
-                                                    categorize notes for easier
-                                                    searching and filtering.
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="grid gap-1">
-                                                <h3 className="text-xl font-medium">
-                                                    Ai Assistant✨
-                                                </h3>
-                                                <p className="text-gray-500">
-                                                    Let AI find what you need in
-                                                    your notes with ease.
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <section className="w-full space-y-24">
+                        <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-24">
+                            <div className="image-fade">
                                 <img
                                     alt="Image"
-                                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                                    className="mx-auto aspect-square overflow-hidden rounded-3xl object-cover object-center"
+                                    height="310"
+                                    src={preview1}
+                                    width="550"
+                                />
+                            </div>
+
+                            <div className="space-y-6 text-primary">
+                                <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
+                                    {/* <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" /> */}
+                                    <div className="inline-flex h-full w-full justify-center rounded-full bg-red-50 border border-red-300 px-3 py-1 text-sm font-normal leading-5 text-red-400 backdrop-blur-xl">
+                                        Minimal Text Editor
+                                    </div>
+                                </span>
+                                <h2 className="text-3xl font-medium sm:text-4xl md:text-4xl tracking-normal">
+                                    Notion-like Editor
+                                </h2>
+                                <p className="text-lg max-w-sm">
+                                    Level up your note-taking with Noteed's
+                                    notion-like editor. Enjoy a user-friendly
+                                    interface and customizable formatting
+                                    options for effortless organization. Stay
+                                    productive and organized with ease.
+                                </p>
+                                <GetStarted />
+                            </div>
+                        </div>
+                        <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-24">
+                            <div className="space-y-6 text-primary">
+                                <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
+                                    {/* <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" /> */}
+                                    <div className="inline-flex h-full w-full justify-center rounded-full bg-red-50 border border-red-300 px-3 py-1 text-sm font-normal leading-5 text-red-400 backdrop-blur-xl">
+                                        Sharing Is Caring
+                                    </div>
+                                </span>
+                                <h2 className="text-3xl font-medium sm:text-4xl md:text-4xl tracking-normal">
+                                    Notes Sharing
+                                </h2>
+                                <p className="text-lg max-w-sm">
+                                    Easily share your notes with Noteed's
+                                    sharing feature. Generate links to your
+                                    notes for quick and convenient sharing,
+                                    perfect for sharing ideas or information
+                                    with others. Stay connected and productive
+                                    with Noteed.
+                                </p>
+                                <GetStarted />
+                            </div>
+                            <div className="image-fade">
+                                <img
+                                    alt="Image"
+                                    className="mx-auto aspect-square overflow-hidden rounded-3xl object-cover object-center"
                                     height="310"
                                     src={preview2}
                                     width="550"
@@ -340,43 +434,312 @@ const Home = () => {
                             </div>
                         </div>
                     </section>
-                    <section className="w-full py-12 md:py-24 lg:py-32 flex items-center justify-center">
-                        <div className="container flex flex-col items-center gap-4 px-4 md:px-6 text-center">
-                            <div className="space-y-2">
-                                <h2 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-tight">
-                                    Get Organized, Get Noted!
-                                </h2>
-                                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Start your note-taking journey with Noteed
-                                    and streamline your productivity today!
-                                </p>
-                            </div>
-                            <div className="flex flex-col gap-4 max-w-sm w-full">
-                                <GetStarted />
-                            </div>
-                        </div>
-                    </section>
+                    <section className="my-28" id="review">
+                        <div className="text-gray-600 pt-8" id="reviews">
+                            <div className="text-center max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                                <span className="relative inline-block overflow-hidden rounded-full p-[1px] mb-2">
+                                    {/* <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" /> */}
+                                    <div className="inline-flex h-full w-full justify-center rounded-full bg-red-50 border border-red-300 px-3 py-1 text-sm font-normal leading-5 text-red-400 backdrop-blur-xl">
+                                        Reviews
+                                    </div>
+                                </span>
+                                <div className="mb-16 space-y-4 px-6 md:px-0">
+                                    <h2 className="text-center text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal text-secondary">
+                                        What people are saying...
+                                    </h2>
+                                </div>
 
-                    <section className="w-full py-12 md:py-24 lg:py-32 border-t">
-                        <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
-                            <div className="space-y-4">
-                                <h2 className="text-3xl font-semibold sm:text-3xl md:text-3xl tracking-tight">
-                                    Contributions
-                                </h2>
-                                <p className="text-secondary">
-                                    For any suggestions or bugs reporting! Check
-                                    the{' '}
-                                    <a
-                                        className="font-semibold"
-                                        href="https://github.com/Salaheddine999/Noteed"
-                                    >
-                                        Github repository
-                                    </a>
-                                    . Thanks!
-                                </p>
+                                <div className="md:columns-2 lg:columns-3 gap-8 space-y-8">
+                                    <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white  shadow-2xl shadow-gray-600/10">
+                                        <div className="flex gap-4">
+                                            <img
+                                                className="w-12 h-12 rounded-full"
+                                                src="https://randomuser.me/api/portraits/women/2.jpg"
+                                                alt="user avatar"
+                                                width="400"
+                                                height="400"
+                                                loading="lazy"
+                                            />
+                                            <div>
+                                                <h6 className="text-lg font-medium text-gray-900 d">
+                                                    Emily Watson
+                                                </h6>
+                                                <p className="text-sm text-gray-500">
+                                                    Mobile dev
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p className="mt-8 text-gray-800">
+                                            Noteed is awesome! It's so easy to
+                                            use and helps me stay organized. I
+                                            use it for everything from shopping
+                                            lists to work notes. Highly
+                                            recommend!
+                                        </p>
+                                    </div>
+
+                                    <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white shadow-2xl shadow-gray-600/10 ">
+                                        <div className="flex gap-4">
+                                            <img
+                                                className="w-12 h-12 rounded-full"
+                                                src="https://randomuser.me/api/portraits/women/16.jpg"
+                                                alt="user avatar"
+                                                width="200"
+                                                height="200"
+                                                loading="lazy"
+                                            />
+                                            <div>
+                                                <h6 className="text-lg font-medium text-gray-900">
+                                                    Ava Patel
+                                                </h6>
+                                                <p className="text-sm text-gray-500">
+                                                    Marketing
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p className="mt-8 text-gray-800">
+                                            {' '}
+                                            I love Noteed! It's become an
+                                            essential tool for my daily tasks.
+                                            The ability to customize note colors
+                                            and lock notes is fantastic.
+                                        </p>
+                                    </div>
+
+                                    <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white shadow-2xl shadow-gray-600/10">
+                                        <div className="flex gap-4">
+                                            <img
+                                                className="w-12 h-12 rounded-full"
+                                                src="https://randomuser.me/api/portraits/men/18.jpg"
+                                                alt="user avatar"
+                                                width="200"
+                                                height="200"
+                                                loading="lazy"
+                                            />
+                                            <div>
+                                                <h6 className="text-lg font-medium text-gray-900 ">
+                                                    Jacob Lee
+                                                </h6>
+                                                <p className="text-sm text-gray-500">
+                                                    Developer
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p className="mt-8 text-gray-800">
+                                            Noteed is simply amazing. I use it
+                                            for work and personal notes, and it
+                                            has made my life so much easier. The
+                                            design is clean, and the app is very
+                                            user-friendly.
+                                        </p>
+                                    </div>
+
+                                    <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white shadow-2xl shadow-gray-600/10">
+                                        <div className="flex gap-4">
+                                            <img
+                                                className="w-12 h-12 rounded-full"
+                                                src="https://randomuser.me/api/portraits/men/33.jpg"
+                                                alt="user avatar"
+                                                width="200"
+                                                height="200"
+                                                loading="lazy"
+                                            />
+                                            <div>
+                                                <h6 className="text-lg font-medium text-gray-900">
+                                                    Ethan Clark
+                                                </h6>
+                                                <p className="text-sm text-gray-500">
+                                                    Mobile dev
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p className="mt-8 text-gray-800">
+                                            I've tried many note-taking apps,
+                                            but none compare to Noteed. It's
+                                            intuitive, fast, and reliable. The
+                                            ability to access my notes from
+                                            anywhere is a game-changer.
+                                        </p>
+                                    </div>
+
+                                    <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white shadow-2xl shadow-gray-600/10">
+                                        <div className="flex gap-4">
+                                            <img
+                                                className="w-12 h-12 rounded-full"
+                                                src="https://randomuser.me/api/portraits/women/11.jpg"
+                                                alt="user avatar"
+                                                width="200"
+                                                height="200"
+                                                loading="lazy"
+                                            />
+                                            <div>
+                                                <h6 className="text-lg font-medium text-gray-900">
+                                                    Mia Garcia
+                                                </h6>
+                                                <p className="text-sm text-gray-500">
+                                                    Student
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p className="mt-8 text-gray-800">
+                                            {' '}
+                                            Noteed has been a lifesaver for my
+                                            studies. I can organize my notes by
+                                            subject and easily access them
+                                            whenever I need to. The export
+                                            feature is also great for sharing
+                                            notes with classmates.
+                                        </p>
+                                    </div>
+
+                                    <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white shadow-2xl shadow-gray-600/10">
+                                        <div className="flex gap-4">
+                                            <img
+                                                className="w-12 h-12 rounded-full"
+                                                src="https://randomuser.me/api/portraits/men/17.jpg"
+                                                alt="user avatar"
+                                                width="400"
+                                                height="400"
+                                                loading="lazy"
+                                            />
+                                            <div>
+                                                <h6 className="text-lg font-medium text-gray-900 ">
+                                                    Lucas Brown
+                                                </h6>
+                                                <p className="text-sm text-gray-500 ">
+                                                    Designer
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p className="mt-8 text-gray-800">
+                                            Noteed is fantastic! I use it every
+                                            day for work and personal notes. The
+                                            ability to customize note
+                                            backgrounds and fonts is a nice
+                                            touch.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
+                    <section className="my-28" id="faq">
+                        <div className="max-w-xl mx-auto text-center">
+                            <span className="relative inline-block overflow-hidden rounded-full p-[1px] mb-2">
+                                {/* <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" /> */}
+                                <div className="inline-flex h-full w-full justify-center rounded-full bg-red-50 border border-red-300 px-3 py-1 text-sm font-normal leading-5 text-red-400 backdrop-blur-xl">
+                                    FAQ
+                                </div>
+                            </span>
+
+                            <div className="mb-16 space-y-4 px-6 md:px-0">
+                                <h2 className="text-center text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal text-secondary">
+                                    Frequently asked questions
+                                </h2>
+                            </div>
+                            <div className="text-left">
+                                <div className="collapse collapse-arrow bg-transparent">
+                                    <input
+                                        type="radio"
+                                        name="my-accordion-2"
+                                        defaultChecked
+                                    />
+                                    <div className="collapse-title text-lg font-medium">
+                                        Can I access my notes from multiple
+                                        devices?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            Yes, you can access your notes from
+                                            any device with an internet
+                                            connection by logging into your
+                                            Noteed account.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="collapse collapse-arrow bg-transparent">
+                                    <input type="radio" name="my-accordion-2" />
+                                    <div className="collapse-title text-lg font-medium">
+                                        Is there a limit to the number of notes
+                                        I can create?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            No, there is no limit to the number
+                                            of notes you can create in Noteed.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="collapse collapse-arrow bg-transparent">
+                                    <input type="radio" name="my-accordion-2" />
+                                    <div className="collapse-title text-lg font-medium">
+                                        Can I share my notes with others?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            Yes, you can share your notes with
+                                            others by clicking on the share icon
+                                            to generate a sharable link.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="collapse collapse-arrow bg-transparent">
+                                    <input type="radio" name="my-accordion-2" />
+                                    <div className="collapse-title text-lg font-medium">
+                                        Can I recover deleted notes?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            No, once notes are deleted, they
+                                            cannot be recovered.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="collapse collapse-arrow bg-transparent">
+                                    <input type="radio" name="my-accordion-2" />
+                                    <div className="collapse-title text-lg font-medium">
+                                        Does Noteed support markdown formatting?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            Yes, Noteed supports markdown
+                                            formatting for text editing.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="collapse collapse-arrow bg-transparent">
+                                    <input type="radio" name="my-accordion-2" />
+                                    <div className="collapse-title text-lg font-medium">
+                                        How do I delete my Noteed account?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>
+                                            You can contact us by emailing
+                                            abw.salaheddine@gmail.com.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="collapse collapse-arrow bg-transparent rounded-xl">
+                                    <input type="radio" name="my-accordion-2" />
+                                    <div className="collapse-title text-lg font-medium">
+                                        Is there a way to organize my notes into
+                                        categories or folders?
+                                    </div>
+                                    <div className="collapse-content">
+                                        <p>Coming soon...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {isVisible && (
+                        <button
+                            onClick={scrollToTop}
+                            className="fixed bottom-[20px] right-[30px] border-2 p-2 border-secondary rounded-lg"
+                        >
+                            <FaArrowUp className="text-secondary" />
+                        </button>
+                    )}
                 </main>
                 <footer className="flex flex-col gap-2 sm:flex-row pb-6 pt-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
                     <p className="text-xs text-gray-500">
