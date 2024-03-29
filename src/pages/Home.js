@@ -51,12 +51,12 @@ const Home = () => {
                             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                                 <div>
                                     <img
-                                        className="absolute ml-6 sm:ml-20 animate-bounce "
+                                        className="absolute ml-6 sm:ml-20 animate-bounce w-10 h-10 sm:h-12 sm:w-12"
                                         src={zwa9a}
                                     />
                                     <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
                                         {/* <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)]" /> */}
-                                        <div className="inline-flex h-full w-full justify-center rounded-full bg-red-50 px-3 py-1 text-sm border border-red-300 font-normal leading-5 text-red-400 backdrop-blur-xl">
+                                        <div className="inline-flex h-full w-full justify-center rounded-full bg-red-50 px-3 py-1 text-xs sm:text-sm border border-red-300 font-normal leading-5 text-red-400 backdrop-blur-xl">
                                             New features⚡️
                                             <a
                                                 className="inline-flex items-center justify-center text-red-400 font-normal"
@@ -71,7 +71,7 @@ const Home = () => {
                                             </a>
                                         </div>
                                     </span>
-                                    <h1 className="text-5xl font-medium sm:text-8xl tracking-tight mb-8">
+                                    <h1 className="text-4xl font-medium sm:text-8xl tracking-tight mb-8 mx-auto">
                                         Ideas captured <br />
                                         Creativity&nbsp;
                                         <RoughNotation
