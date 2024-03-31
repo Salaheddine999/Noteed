@@ -8,7 +8,7 @@ module.exports = {
                 marquee2: 'marquee2 20s linear infinite',
                 marquee3: 'marquee3 20s linear infinite',
                 marquee4: 'marquee4 20s linear infinite',
-                blob: 'blob 7s infinite',
+                blob: 'blob 6s infinite',
             },
             keyframes: {
                 marquee: {

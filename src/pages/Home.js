@@ -14,6 +14,7 @@ import { RoughNotation } from 'react-rough-notation';
 import GetStarted from '../auth/GetStarted';
 import { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
+import icon from '../assets/icon_1.png';
 const Home = () => {
     const { isAuthenticated } = useAuth0();
     const navigate = useNavigate();
@@ -329,10 +330,10 @@ const Home = () => {
                                         </div>
                                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 text-gray-800">
                                             <div className="flex flex-col bg-white text-left rounded-3xl overflow-hidden p-10 shadow-md">
-                                                <h3 className="text-xl font-medium mb-2 ">
+                                                <h3 className="text-xl font-medium mb-2">
                                                     Super Fast
                                                 </h3>
-                                                <p className="pb-16">
+                                                <p className="pb-8">
                                                     Noteed ensures your thoughts
                                                     are captured without delay,
                                                     keeping up with your pace
@@ -347,7 +348,7 @@ const Home = () => {
                                                 <h3 className="text-xl font-medium mb-2">
                                                     Multi-Device Sync
                                                 </h3>
-                                                <p className="pb-16">
+                                                <p className="pb-8">
                                                     With Noteed, your notes sync
                                                     seamlessly across all
                                                     devices, ensuring access and
@@ -362,7 +363,7 @@ const Home = () => {
                                                 <h3 className="text-xl font-medium mb-2">
                                                     Dark Mode
                                                 </h3>
-                                                <p className="pb-16">
+                                                <p className="pb-8">
                                                     Noteed's dark mode offers a
                                                     comfortable reading and
                                                     writing experience, reducing
@@ -793,13 +794,14 @@ const Home = () => {
                     )}
                 </main>
                 <footer className="flex flex-col gap-2 sm:flex-row pb-6 pt-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-                    <p className="text-xs text-gray-800">
-                        © 2024 Noteed | Made by{' '}
+                    <img src={icon} className="w-12 h-12" />
+                    <p className="text-sm text-gray-800">
+                        Made by{' '}
                         <span className="font-medium">Salah eddine</span>
                     </p>
                     <nav className="sm:ml-auto flex gap-4 sm:gap-6">
                         <Link
-                            className="text-xs hover:underline underline-offset-4"
+                            className="text-sm hover:underline underline-offset-4"
                             to="/terms-of-use"
                         >
                             Terms of Use
