@@ -52,9 +52,9 @@ const Home = () => {
                             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                                 <div class="flex items-center justify-center px-16">
                                     <div class="relative w-full max-w-full">
-                                        <div class="absolute top-0 left-40 w-72 h-72 bg-red-300 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob"></div>
-                                        <div class="absolute top-0 right-48 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-2000"></div>
-                                        <div class="absolute -bottom-8 left-60 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-4000"></div>
+                                        <div class="absolute top-0 left-40 w-72 h-72 bg-red-300 rounded-full mix-blend-multiply filter blur-xl opacity-60 sm:animate-blob"></div>
+                                        <div class="absolute top-0 right-48 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-60 sm:animate-blob sm:animation-delay-2000"></div>
+                                        <div class="absolute -bottom-8 left-60 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-60 sm:animate-blob sm:animation-delay-4000"></div>
                                         <div class="">
                                             <div>
                                                 <img
@@ -78,7 +78,7 @@ const Home = () => {
                                                         </a>
                                                     </div>
                                                 </span>
-                                                <h1 className="text-4xl font-medium sm:text-8xl tracking-tight mb-8 mx-auto">
+                                                <h1 className="text-[40px] leading-10 font-medium sm:text-8xl tracking-tight mb-8 mx-auto">
                                                     Ideas captured <br />
                                                     Creativity&nbsp;
                                                     <RoughNotation
@@ -227,8 +227,8 @@ const Home = () => {
                                             to new heights, only with Noteed!
                                         </p>
                                     </div>
-                                    <div className="w-full max-w-full mx-auto">
-                                        <div className="hidden sm:inline">
+                                    <div className="w-full max-w-xs sm:max-w-full mx-auto">
+                                        <div>
                                             <div className="relative flex overflow-x-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
                                                 <div className="py-8 animate-marquee whitespace-nowrap">
                                                     <span className="mx-2 text-md px-4 bg-white rounded-lg py-4 text-black border-white border-2 shadow-md">
@@ -278,7 +278,7 @@ const Home = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="hidden sm:inline">
+                                        <div>
                                             <div className="-mt-6 mb-8 relative flex overflow-x-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
                                                 <div className="py-8 animate-marquee3 whitespace-nowrap">
                                                     <span className="mx-2 text-md px-4 bg-white rounded-lg py-4 text-black border-white border-2 shadow-md">
@@ -639,8 +639,8 @@ const Home = () => {
                         <div class="flex items-center justify-center">
                             <div class="relative w-full max-w-full">
                                 {/* <div class="absolute top-60 left-72 w-72 h-72 bg-rose-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div> */}
-                                <div class="absolute top-72 right-64 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay"></div>
-                                <div class="absolute bottom-8 left-64 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+                                <div class="absolute top-72 right-64 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 sm:animate-blob sm:animation-delay"></div>
+                                <div class="absolute bottom-8 left-64 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 sm:animate-blob sm:animation-delay-2000"></div>
                                 <div class="m-8 relative space-y-4">
                                     <div className="max-w-xl mx-auto text-center">
                                         <span className="relative inline-block overflow-hidden rounded-full p-[1px] mb-2 shadow-md">
@@ -649,7 +649,6 @@ const Home = () => {
                                                 FAQ
                                             </div>
                                         </span>
-
                                         <div className="mb-16 space-y-4 px-6 md:px-0">
                                             <h2 className="text-center text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal text-secondary">
                                                 Frequently asked questions
@@ -784,6 +783,7 @@ const Home = () => {
                             </div>
                         </div>
                     </section>
+
                     {isVisible && (
                         <button
                             onClick={scrollToTop}
