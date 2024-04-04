@@ -15,7 +15,7 @@ import TermsOfUse from './pages/TermsOfUse';
 import SharedNote from './pages/SharedNote';
 import ShortcutsModal from './components/ShortcutsModal';
 import { BsQuestionCircle } from 'react-icons/bs';
-
+import Footer from './components/Footer';
 const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ component, ...args }) => {
@@ -95,10 +95,15 @@ function AppContent() {
                                 path="/terms-of-use"
                                 element={<TermsOfUse />}
                             />
-                            <Route path="/add-note" element={<AddNote />} />
+                            <Route
+                                path="/add-note"
+                                element={<ProtectedRoute component={AddNote} />}
+                            />
                             <Route
                                 path="/edit-note/:id"
-                                element={<EditNote />}
+                                element={
+                                    <ProtectedRoute component={EditNote} />
+                                }
                             />
                             <Route
                                 path="/shared-note"
@@ -106,6 +111,7 @@ function AppContent() {
                             />
                         </Routes>
                     </main>
+                    {location.pathname == '/' && <Footer />}
                 </Auth0ProviderWithNavigate>
             </div>
             {location.pathname !== '/' && (

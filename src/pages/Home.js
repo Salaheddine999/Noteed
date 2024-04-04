@@ -13,7 +13,7 @@ import { RoughNotation } from 'react-rough-notation';
 import GetStarted from '../auth/GetStarted';
 import { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
-import Footer from '../components/Footer';
+
 const Home = () => {
     const { isAuthenticated } = useAuth0();
     const navigate = useNavigate();
@@ -77,7 +77,7 @@ const Home = () => {
                                                         </a>
                                                     </div>
                                                 </span>
-                                                <h1 className="text-[40px] leading-10 font-medium sm:text-8xl tracking-tight mb-8 mx-auto">
+                                                <h1 className="text-[40px] leading-10 font-medium sm:text-8xl tracking-tight mb-8 mx-auto text-black">
                                                     Ideas captured <br />
                                                     Creativity&nbsp;
                                                     <RoughNotation
@@ -91,7 +91,7 @@ const Home = () => {
                                                         unleashed.
                                                     </RoughNotation>{' '}
                                                 </h1>
-                                                <p className="text-center max-w-lg mx-auto tracking-wide mb-6 text-md sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
+                                                <p className="text-center max-w-lg mx-auto text-black tracking-wide mb-6 text-md sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
                                                     With Noteed, gather,
                                                     organize, and prioritize
                                                     your notes effortlessly.
@@ -109,7 +109,7 @@ const Home = () => {
                                             onClick={() => {
                                                 navigate('/dashboard');
                                             }}
-                                            className="btn btn-primary gap-2 capitalize rounded-md font-normal border bg-primary text-base-100"
+                                            className="btn btn-primary gap-2 capitalize rounded-lg font-normal border bg-black text-white hover:bg-transparent hover:text-black hover:border-black hover:border-2"
                                         >
                                             Dashboard
                                         </button>
@@ -119,24 +119,24 @@ const Home = () => {
                                                 {/* <LoginButton /> */}
                                                 <SignupButton />
                                             </div>
-                                            <a className="text-sm text-neutral tracking-wide">
+                                            <a className="text-sm text-black tracking-wide">
                                                 Would you like to try the app?
                                             </a>
-                                            <span className="text-sm text-neutral tracking-wide">
+                                            <span className="text-sm text-black tracking-wide">
                                                 {' '}
                                                 use demo account
                                             </span>
                                             <br />
                                             <h5 className="flex justify-center gap-2 text-sm text-gray-500 dark:text-[#ffffff] tracking-wide">
-                                                <div className="underline text-neutral">
-                                                    <span className="badge bg-transparent border-none text-neutral">
+                                                <div className="underline text-black">
+                                                    <span className="badge bg-transparent border-none text-black">
                                                         Email:
                                                     </span>
                                                     demo@email.com
                                                 </div>
 
-                                                <div className="underline text-neutral">
-                                                    <span className="badge bg-transparent border-none text-neutral">
+                                                <div className="underline text-black">
+                                                    <span className="badge bg-transparent border-none text-black">
                                                         Password:
                                                     </span>
                                                     Demo1234
@@ -183,7 +183,7 @@ const Home = () => {
                                                             ),
                                                         )}
                                                     </div>
-                                                    <p className="text-sm">
+                                                    <p className="text-sm text-black">
                                                         Loved by 100+ users
                                                     </p>
                                                 </div>
@@ -215,10 +215,10 @@ const Home = () => {
                                                 Noteed Features
                                             </div>
                                         </span>
-                                        <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal">
+                                        <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal text-black">
                                             See All Features
                                         </h1>
-                                        <p className="text-center max-w-lg mx-auto tracking-wide mb-6 text-md sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
+                                        <p className="text-center text-black max-w-lg mx-auto tracking-wide mb-6 text-md sm:text-lg md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed tracking-tight">
                                             Embark on a journey of discovery
                                             through a comprehensive array of
                                             features, meticulously crafted to
@@ -400,10 +400,10 @@ const Home = () => {
                                         Minimal Text Editor
                                     </div>
                                 </span>
-                                <h2 className="text-3xl font-medium sm:text-4xl md:text-4xl tracking-normal">
+                                <h2 className="text-3xl font-medium sm:text-4xl md:text-4xl tracking-normal text-black">
                                     Notion-like Editor
                                 </h2>
-                                <p className="text-lg max-w-sm">
+                                <p className="text-lg max-w-sm text-black">
                                     Level up your note-taking with Noteed's
                                     notion-like editor. Enjoy a user-friendly
                                     interface and customizable formatting
@@ -421,10 +421,10 @@ const Home = () => {
                                         Sharing Is Caring
                                     </div>
                                 </span>
-                                <h2 className="text-3xl font-medium sm:text-4xl md:text-4xl tracking-normal">
+                                <h2 className="text-3xl font-medium sm:text-4xl md:text-4xl tracking-normal text-black">
                                     Notes Sharing
                                 </h2>
-                                <p className="text-lg max-w-sm">
+                                <p className="text-lg max-w-sm text-black">
                                     Easily share your notes with Noteed's
                                     sharing feature. Generate links to your
                                     notes for quick and convenient sharing,
@@ -455,7 +455,7 @@ const Home = () => {
                                     </div>
                                 </span>
                                 <div className="mb-16 space-y-4 px-6 md:px-0">
-                                    <h2 className="text-center text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal text-secondary">
+                                    <h2 className="text-center text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal text-black">
                                         What people are saying...
                                     </h2>
                                 </div>
@@ -635,7 +635,7 @@ const Home = () => {
                         </div>
                     </section>
                     <section className="my-28" id="faq">
-                        <div class="flex items-center justify-center">
+                        <div class="flex items-center justify-center text-black">
                             <div class="relative w-full max-w-full">
                                 {/* <div class="absolute top-60 left-72 w-72 h-72 bg-rose-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div> */}
                                 <div class="absolute top-72 right-64 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 sm:animate-blob sm:animation-delay"></div>
@@ -649,7 +649,7 @@ const Home = () => {
                                             </div>
                                         </span>
                                         <div className="mb-16 space-y-4 px-6 md:px-0">
-                                            <h2 className="text-center text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal text-secondary">
+                                            <h2 className="text-center text-3xl font-semibold sm:text-4xl md:text-5xl tracking-normal text-black">
                                                 Frequently asked questions
                                             </h2>
                                         </div>
@@ -786,13 +786,12 @@ const Home = () => {
                     {isVisible && (
                         <button
                             onClick={scrollToTop}
-                            className="fixed bottom-[20px] right-[30px] border-2 p-2 border-secondary rounded-lg"
+                            className="fixed bottom-[20px] right-[30px] border-2 p-2 border-black rounded-lg"
                         >
-                            <FaArrowUp className="text-secondary" />
+                            <FaArrowUp className="text-black" />
                         </button>
                     )}
                 </main>
-                <Footer />
             </div>
         </div>
     );

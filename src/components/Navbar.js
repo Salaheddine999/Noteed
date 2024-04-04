@@ -4,8 +4,12 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './logo/Logo';
 import LoginButton from '../auth/LoginButton';
+import { useLocation } from 'react-router-dom';
+
 const Navbar = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
+    const location = useLocation();
+    const isHomeRoute = location.pathname === '/';
 
     // use theme from local storage if available or set light theme
     const [theme, setTheme] = useState(
@@ -32,7 +36,13 @@ const Navbar = () => {
     return (
         <>
             <div>
-                <header className="px-6  h-20 flex items-center text-primary">
+                <header
+                    className={
+                        location.pathname === '/'
+                            ? 'px-6  h-20 flex items-center text-black'
+                            : 'px-6  h-20 flex items-center text-primary'
+                    }
+                >
                     {/* <a className="flex items-center justify-center text-3xl font-semibold">
                     ✏️Noteed
                     <span className="sr-only">Noteed</span>
