@@ -1,14 +1,11 @@
-import NoteItem from "./NoteItem";
+import NoteItem from './NoteItem';
 
 const NoteList = (props) => {
-    
-
-    return ( 
-        <> 
+    return (
+        <>
             <NoteItem note={props.note} />
         </>
+    );
+};
 
-     );
-}
- 
 export default NoteList;

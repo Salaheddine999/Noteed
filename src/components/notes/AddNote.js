@@ -84,11 +84,17 @@ const AddNote = () => {
 
     const navigate = useNavigate();
 
+    const [audioUrl, setAudioUrl] = useState(null);
+    const [isRecording, setIsRecording] = useState(false);
+    const mediaRecorderRef = useRef(null);
+    const [audioData, setAudioData] = useState(null);
+
     const noteData = {
         title: title,
         body: editorContent,
         user_id: email,
         color: color,
+        audio_data: audioData,
     };
     const { mutate: noteMutation } = useAddNote();
 
@@ -98,14 +104,12 @@ const AddNote = () => {
             if (title === '') {
                 toast.error('Missing title!');
                 return;
-            } else if (editorContent === '') {
-                toast.error('Missing body!');
+            } else if (editorContent === '' && !audioData) {
+                toast.error('Please add some content or record audio!');
                 return;
             } else {
                 noteMutation(noteData);
                 toast.success('Your note was saved successfully');
-                // setTitle('')
-                // setBody('')
                 navigate('/dashboard');
             }
         } catch (error) {
@@ -120,7 +124,6 @@ const AddNote = () => {
         } else {
             const fileName = `${title || 'note'}.txt`;
             const content = `${title}\n\n${body}`;
-            // const content = `Title: ${title}\nBody: ${body}\nColor: ${color}\nPinned: ${pinned}`;
 
             const element = document.createElement('a');
             const file = new Blob([content], { type: 'text/plain' });
@@ -192,7 +195,6 @@ const AddNote = () => {
             popover: {
                 position: 'absolute',
                 top: '220px',
-                //right:'66px'
             },
             cover: {
                 zIndex: '1',
@@ -208,6 +210,45 @@ const AddNote = () => {
             },
         },
     });
+
+    const handleAudioRecording = async () => {
+        if (isRecording) {
+            mediaRecorderRef.current.stop();
+            setIsRecording(false);
+        } else {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    audio: true,
+                });
+                const mediaRecorder = new MediaRecorder(stream);
+                mediaRecorderRef.current = mediaRecorder;
+
+                mediaRecorder.ondataavailable = async (event) => {
+                    if (event.data.size > 0) {
+                        const audioBlob = new Blob([event.data], {
+                            type: 'audio/wav',
+                        });
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        setAudioUrl(audioUrl);
+
+                        // Convert blob to base64
+                        const reader = new FileReader();
+                        reader.readAsDataURL(audioBlob);
+                        reader.onloadend = () => {
+                            const base64Audio = reader.result;
+                            setAudioData(base64Audio);
+                        };
+                    }
+                };
+
+                mediaRecorder.start();
+                setIsRecording(true);
+            } catch (error) {
+                console.error('Error accessing microphone:', error);
+                toast.error('Unable to access microphone');
+            }
+        }
+    };
 
     return (
         <div className="-mx-2 lg:mx-8 md:mx-4 sm:mx-2 text-primary">
@@ -302,11 +343,6 @@ const AddNote = () => {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
-
-                    {/* <textarea className="textarea textarea-ghost text-xl resize-none sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-60 focus:border-transparent focus:outline-none disabled:bg-transparent disabled:border-transparent" placeholder="Your thoughts..."
-                value={body}
-                onChange={(e)=>setBody(e.target.value)}
-                disabled={isLocked}></textarea> */}
 
                     <div
                         className={`textarea textarea-ghost text-xl resize-none sm:text-2xl col-start-1 sm:col-start-2 sm:col-span-4 h-60 focus:border-transparent focus:outline-none disabled:bg-transparent disabled:border-transparent ${
@@ -529,6 +565,22 @@ const AddNote = () => {
                             </BubbleMenu>
                         )}
                         <EditorContent editor={editor} />
+                    </div>
+                    <div className="mt-8">
+                        <button
+                            type="button"
+                            onClick={handleAudioRecording}
+                            className={`btn ${
+                                isRecording
+                                    ? 'bg-red-500 text-white'
+                                    : 'btn-primary'
+                            } rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case`}
+                        >
+                            {isRecording ? 'Stop Recording' : 'Start Recording'}
+                        </button>
+                        {audioUrl && (
+                            <audio className="mt-4" controls src={audioUrl} />
+                        )}
                     </div>
                 </div>
                 <div className="card-footer mt-12">

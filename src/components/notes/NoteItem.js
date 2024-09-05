@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -10,7 +10,8 @@ import Modal from '../Modal';
 import { useDeleteNote } from '../../hooks/useNote';
 
 const NoteItem = ({ note }) => {
-    const { id, title, body, color } = note;
+    const { id, title, body, color, audio_data } = note; // Change this line
+    const [audioUrl, setAudioUrl] = useState(null);
 
     const { user } = useAuth0();
     const { name } = user;
@@ -62,6 +63,25 @@ const NoteItem = ({ note }) => {
         }
     }, []);
 
+    const base64ToBlob = (base64, type = 'audio/wav') => {
+        const binaryString = window.atob(base64.split(',')[1]);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return new Blob([bytes], { type: type });
+    };
+
+    useEffect(() => {
+        if (audio_data) {
+            // Change this line
+            const audioBlob = base64ToBlob(audio_data, 'audio/wav'); // Change this line
+            const url = URL.createObjectURL(audioBlob);
+            setAudioUrl(url);
+        }
+    }, [audio_data]); // Change this line
+
     return (
         <>
             <div
@@ -74,9 +94,11 @@ const NoteItem = ({ note }) => {
                 <div className="card-body p-6">
                     <div className="dropdown dropdown-end">
                         <div className="grid grid-cols-2">
-                            <h2 className="card-title col-start-1 col-end-6 font-medium text-xl text-black">
-                                {title}
-                            </h2>
+                            <Link to={`/edit-note/${id}`}>
+                                <h2 className="card-title col-start-1 col-end-6 font-medium text-xl text-black">
+                                    {title}
+                                </h2>
+                            </Link>
                             <div className="card-actions justify-end col-end-7 col-span-1">
                                 <label
                                     htmlFor={`my-modal-${note.id}`}
@@ -102,6 +124,9 @@ const NoteItem = ({ note }) => {
                             {htmlToReact(body)}
                         </p>
                     </Link>
+                    {audioUrl && (
+                        <audio className="mt-4" controls src={audioUrl} />
+                    )}
                 </div>
             </div>
             <Modal deleteNote={deleteNote} id={id} />

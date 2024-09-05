@@ -92,6 +92,10 @@ const EditNote = () => {
     const [pinned, setPinned] = useState();
     const [showColorPicker, setShowColorPicker] = useState(false);
     const { email } = user;
+    const [audioUrl, setAudioUrl] = useState(null);
+    const [isRecording, setIsRecording] = useState(false);
+    const [audioData, setAudioData] = useState(null);
+    const mediaRecorderRef = useRef(null);
 
     useEffect(() => {
         axios.get(`${api}/${id}`).then((data) => {
@@ -101,9 +105,30 @@ const EditNote = () => {
             setPinned(data?.data.pinned);
             editor.commands.setContent(data?.data.body);
             setEditorContent(data?.data.body);
+            if (data?.data.audio_data) {
+                setAudioData(data.data.audio_data);
+                // Create a proper URL from the base64 audio data
+                const audioBlob = base64ToBlob(
+                    data.data.audio_data,
+                    'audio/wav',
+                );
+                const audioUrl = URL.createObjectURL(audioBlob);
+                setAudioUrl(audioUrl);
+            }
             setIsfetching(false);
         });
     }, [editor]);
+
+    // Add this helper function to convert base64 to Blob
+    const base64ToBlob = (base64, type = 'audio/wav') => {
+        const binaryString = window.atob(base64.split(',')[1]);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return new Blob([bytes], { type: type });
+    };
 
     const noteMutation = useMutation(
         (updateNote) => {
@@ -129,6 +154,7 @@ const EditNote = () => {
                     user_id: email,
                     color: color,
                     pinned: pinned,
+                    audio_data: audioData,
                 });
                 toast.success('Note updated successfully!');
             } catch (error) {
@@ -236,6 +262,45 @@ const EditNote = () => {
             },
         },
     });
+
+    const handleAudioRecording = async () => {
+        if (isRecording) {
+            mediaRecorderRef.current.stop();
+            setIsRecording(false);
+        } else {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    audio: true,
+                });
+                const mediaRecorder = new MediaRecorder(stream);
+                mediaRecorderRef.current = mediaRecorder;
+
+                mediaRecorder.ondataavailable = async (event) => {
+                    if (event.data.size > 0) {
+                        const audioBlob = new Blob([event.data], {
+                            type: 'audio/wav',
+                        });
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        setAudioUrl(audioUrl);
+
+                        // Convert blob to base64
+                        const reader = new FileReader();
+                        reader.readAsDataURL(audioBlob);
+                        reader.onloadend = () => {
+                            const base64Audio = reader.result;
+                            setAudioData(base64Audio);
+                        };
+                    }
+                };
+
+                mediaRecorder.start();
+                setIsRecording(true);
+            } catch (error) {
+                console.error('Error accessing microphone:', error);
+                toast.error('Unable to access microphone');
+            }
+        }
+    };
 
     return (
         <div className="-mx-2 lg:mx-8 md:mx-4 sm:mx-2 text-primary">
@@ -572,6 +637,26 @@ const EditNote = () => {
                                 )}
                                 <EditorContent editor={editor} />
                             </div>
+                        </div>
+                        <div className="mt-8">
+                            <button
+                                type="button"
+                                onClick={handleAudioRecording}
+                                className={`btn ${
+                                    isRecording ? 'btn-error' : 'btn-primary'
+                                } rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case`}
+                            >
+                                {isRecording
+                                    ? 'Stop Recording'
+                                    : 'Start Recording'}
+                            </button>
+                            {audioUrl && (
+                                <audio
+                                    className="mt-4"
+                                    controls
+                                    src={audioUrl}
+                                />
+                            )}
                         </div>
                         <div className="card-footer mt-12">
                             <div className="flex items-center justify-between">

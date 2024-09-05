@@ -58,7 +58,7 @@ function App() {
             </BrowserRouter>
             <ToastContainer
                 autoClose={1500}
-                position="bottom-center"
+                position="top-center"
                 hideProgressBar={true}
                 closeOnClick
                 style={{ width: 'auto' }}
