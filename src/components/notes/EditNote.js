@@ -122,16 +122,29 @@ const EditNote = () => {
         if (title === '') {
             toast.error('Missing title!');
         } else {
-            noteMutation.mutate({
-                title: title,
-                body: editorContent,
-                user_id: email,
-                color: color,
-                pinned: pinned,
-                audio_data: audioData,
-            });
+            const hasChanged =
+                title !== originalTitle ||
+                editorContent !== originalBody ||
+                color !== originalColor;
+            if (hasChanged) {
+                noteMutation.mutate({
+                    title: title,
+                    body: editorContent,
+                    user_id: email,
+                    color: color,
+                    pinned: pinned,
+                    audio_data: audioData,
+                });
+            } else {
+                toast.info('No changes detected');
+                navigate('/dashboard');
+            }
         }
     };
+
+    const [originalTitle, setOriginalTitle] = useState('');
+    const [originalBody, setOriginalBody] = useState('');
+    const [originalColor, setOriginalColor] = useState('');
 
     useEffect(() => {
         axios.get(`${api}/${id}`).then((data) => {
@@ -151,6 +164,10 @@ const EditNote = () => {
                 const audioUrl = URL.createObjectURL(audioBlob);
                 setAudioUrl(audioUrl);
             }
+            // Set original values
+            setOriginalTitle(data?.data.title);
+            setOriginalBody(data?.data.body);
+            setOriginalColor(data?.data.color);
             setIsfetching(false);
         });
     }, [editor]);

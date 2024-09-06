@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import NoteList from '../components/notes/NoteList';
 import Spinner from '../components/spinner/Spinner';
 import { useNotesData, usePinnedNotes } from '../hooks/useNote';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
 import { FaChevronLeft } from 'react-icons/fa';
 import { BsQuestionCircle } from 'react-icons/bs';
@@ -11,19 +11,20 @@ import ShortcutsModal from '../components/ShortcutsModal';
 
 const Dashboard = () => {
     const [sortOrder, setSortOrder] = useState('desc');
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const { user, isAuthenticated, isLoading, error } = useAuth0();
     const { email } = user;
-
     const { data, isFetching } = useNotesData(email);
     //const { data: pinnedNotes } = usePinnedNotes(email);
 
-    const sortedData = data?.data.sort((a, b) => {
-        if (sortOrder === 'asc') {
-            return new Date(a.created_at) - new Date(b.created_at);
-        } else {
-            return new Date(b.created_at) - new Date(a.created_at);
-        }
-    });
+    const sortedData = useMemo(() => {
+        if (!data?.data) return [];
+        return [...data.data].sort((a, b) => {
+            const dateA = new Date(a.created_at);
+            const dateB = new Date(b.created_at);
+            return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+        });
+    }, [data, sortOrder]);
 
     const pageSize = 6;
     const [currentPage, setCurrentPage] = useState(1);
@@ -36,10 +37,12 @@ const Dashboard = () => {
         setCurrentPage(currentPage - 1);
     };
 
-    const paginatedData = sortedData?.slice(
-        (currentPage - 1) * pageSize,
-        currentPage * pageSize,
-    );
+    const paginatedData = useMemo(() => {
+        return sortedData?.slice(
+            (currentPage - 1) * pageSize,
+            currentPage * pageSize,
+        );
+    }, [sortedData, currentPage, pageSize]);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -62,6 +65,7 @@ const Dashboard = () => {
                             <label
                                 tabIndex={0}
                                 className="btn btn-outline m-1 normal-case rounded-md font-normal border-2"
+                                onClick={() => setDropdownOpen(!dropdownOpen)}
                             >
                                 {sortOrder === 'desc' ? 'Newest' : 'Oldest'}
                                 &nbsp;
@@ -78,27 +82,43 @@ const Dashboard = () => {
                                     />
                                 </svg>
                             </label>
-                            <ul
-                                tabIndex={0}
-                                className="dropdown-content menu p-2 shadow bg-base-100 w-36 rounded-md"
-                            >
-                                <li>
-                                    <a
-                                        onClick={() => setSortOrder('desc')}
-                                        className="text-sm rounded-md"
-                                    >
-                                        Newest
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        onClick={() => setSortOrder('asc')}
-                                        className="text-sm rounded-md"
-                                    >
-                                        Oldest
-                                    </a>
-                                </li>
-                            </ul>
+                            {dropdownOpen && (
+                                <ul
+                                    tabIndex={0}
+                                    className="dropdown-content menu p-2 shadow bg-base-100 w-36 rounded-md"
+                                >
+                                    <li>
+                                        <a
+                                            onClick={() => {
+                                                setSortOrder('desc');
+                                                setDropdownOpen(false);
+                                            }}
+                                            className={`text-sm rounded-md ${
+                                                sortOrder === 'desc'
+                                                    ? 'font-medium'
+                                                    : ''
+                                            }`}
+                                        >
+                                            Newest
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            onClick={() => {
+                                                setSortOrder('asc');
+                                                setDropdownOpen(false);
+                                            }}
+                                            className={`text-sm rounded-md ${
+                                                sortOrder === 'asc'
+                                                    ? 'font-medium'
+                                                    : ''
+                                            }`}
+                                        >
+                                            Oldest
+                                        </a>
+                                    </li>
+                                </ul>
+                            )}
                         </div>
                         <Link
                             className="btn btn-primary gap-2 rounded-md font-normal border bg-primary text-base-100 normal-case"
