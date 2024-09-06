@@ -21,6 +21,7 @@ import TaskItem from '@tiptap/extension-task-item';
 import TaskList from '@tiptap/extension-task-list';
 import Heading from '@tiptap/extension-heading';
 import Placeholder from '@tiptap/extension-placeholder';
+import { useQueryClient } from 'react-query';
 
 import {
     RiBold,
@@ -36,6 +37,9 @@ import {
 } from 'react-icons/ri';
 
 const AddNote = () => {
+    const navigate = useNavigate();
+    const queryClient = useQueryClient();
+
     const [editorContent, setEditorContent] = useState('');
     const editor = useEditor({
         extensions: [
@@ -82,8 +86,6 @@ const AddNote = () => {
     const [showColorPicker, setShowColorPicker] = useState(false);
     const { email } = user;
 
-    const navigate = useNavigate();
-
     const [audioUrl, setAudioUrl] = useState(null);
     const [isRecording, setIsRecording] = useState(false);
     const mediaRecorderRef = useRef(null);
@@ -96,7 +98,7 @@ const AddNote = () => {
         color: color,
         audio_data: audioData,
     };
-    const { mutate: noteMutation } = useAddNote();
+    const { mutate: noteMutation, isLoading: isAddingNote } = useAddNote();
 
     const addNote = (e) => {
         e.preventDefault();
@@ -108,11 +110,20 @@ const AddNote = () => {
                 toast.error('Please add some content or record audio!');
                 return;
             } else {
-                noteMutation(noteData);
-                toast.success('Your note was saved successfully');
-                navigate('/dashboard');
+                noteMutation(noteData, {
+                    onSuccess: () => {
+                        queryClient.invalidateQueries('notes');
+                        toast.success('Your note was saved successfully');
+                        navigate('/dashboard');
+                    },
+                    onError: (error) => {
+                        console.error('Error adding note:', error);
+                        toast.error('Something went wrong');
+                    },
+                });
             }
         } catch (error) {
+            console.error('Error in addNote function:', error);
             toast.error('Something went wrong');
         }
     };
@@ -308,10 +319,13 @@ const AddNote = () => {
                                 </div>
                             </div>
                         )}
-                        {noteMutation.isLoading ? (
-                            <button className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">
+                        {isAddingNote ? (
+                            <button
+                                className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case"
+                                disabled
+                            >
                                 <span className="loading loading-spinner"></span>
-                                Loading
+                                Saving...
                             </button>
                         ) : (
                             <button

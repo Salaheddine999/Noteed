@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState, useRef } from 'react';
@@ -97,6 +97,42 @@ const EditNote = () => {
     const [audioData, setAudioData] = useState(null);
     const mediaRecorderRef = useRef(null);
 
+    const navigate = useNavigate();
+
+    const noteMutation = useMutation(
+        (updateNote) => {
+            return axios.post(`${api}/${id}`, updateNote);
+        },
+        {
+            onSuccess: () => {
+                queryClient.invalidateQueries('notes');
+                toast.success('Note updated successfully!');
+                navigate('/dashboard');
+            },
+            onError: (error) => {
+                console.error('Error updating note:', error);
+                toast.error('Something went wrong!');
+            },
+        },
+    );
+
+    const updateNote = (e) => {
+        e.preventDefault();
+
+        if (title === '') {
+            toast.error('Missing title!');
+        } else {
+            noteMutation.mutate({
+                title: title,
+                body: editorContent,
+                user_id: email,
+                color: color,
+                pinned: pinned,
+                audio_data: audioData,
+            });
+        }
+    };
+
     useEffect(() => {
         axios.get(`${api}/${id}`).then((data) => {
             setTitle(data?.data.title);
@@ -128,39 +164,6 @@ const EditNote = () => {
             bytes[i] = binaryString.charCodeAt(i);
         }
         return new Blob([bytes], { type: type });
-    };
-
-    const noteMutation = useMutation(
-        (updateNote) => {
-            return axios.post(`${api}/${id}`, updateNote);
-        },
-        {
-            onSuccess: () => {
-                queryClient.invalidateQueries('notes');
-            },
-        },
-    );
-
-    const updateNote = (e) => {
-        e.preventDefault();
-
-        if (title === '') {
-            toast.error('Missing title!');
-        } else {
-            try {
-                noteMutation.mutate({
-                    title: title,
-                    body: editorContent,
-                    user_id: email,
-                    color: color,
-                    pinned: pinned,
-                    audio_data: audioData,
-                });
-                toast.success('Note updated successfully!');
-            } catch (error) {
-                toast.error('Something went wrong!');
-            }
-        }
     };
 
     const handlePrint = (e) => {
@@ -360,9 +363,12 @@ const EditNote = () => {
                             </div>
                         )}
                         {noteMutation.isLoading ? (
-                            <button className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case">
+                            <button
+                                className="btn btn-primary rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case"
+                                disabled
+                            >
                                 <span className="loading loading-spinner"></span>
-                                Loading
+                                Saving...
                             </button>
                         ) : (
                             <button
@@ -643,7 +649,9 @@ const EditNote = () => {
                                 type="button"
                                 onClick={handleAudioRecording}
                                 className={`btn ${
-                                    isRecording ? 'btn-error' : 'btn-primary'
+                                    isRecording
+                                        ? 'bg-red-500 text-white'
+                                        : 'btn-primary'
                                 } rounded-md font-normal md:btn-md lg:btn-md xl:btn-md sm:btn-sm normal-case`}
                             >
                                 {isRecording

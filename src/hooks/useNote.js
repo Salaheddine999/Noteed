@@ -27,8 +27,8 @@ const addNote = (noteData) => {
 
 //Fetch all notes by user(not pinned)
 export const useNotesData = (email) => {
-    return useQuery('notes', () => fetchNotes(email), {
-        refetchOnWindowFocus: false,
+    return useQuery(['notes', email], () => fetchNotes(email), {
+        staleTime: 60000, // 1 minute
     });
 };
 
